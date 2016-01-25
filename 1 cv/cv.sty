@@ -1,0 +1,28 @@
+%-------------------%
+%
+% cv template
+%
+% LaTeX@dd
+%
+%-------------------%
+
+\ProvidesPackage{cv}
+
+\setlength{\parindent}{0pt}
+\setlength{\hoffset}{-2.4cm}
+\setlength{\voffset}{-4cm}
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{25cm}
+
+
+\newcommand{\info}[2]{\textbf{#1} & #2\\}
+%\newcommand{\rad}[2]{\textbf{#1}\begin{flushright}\begin{minipage}{15.5cm}#2\end{minipage}\end{flushright}}
+\newcommand{\rad}[2]{\textbf{#1}\\\rightline{\parbox{15.5 cm}{#2}}}
+\newcommand{\lrad}[2]{\textbf{#1} & #2\\}
+\newenvironment{personinfo}%
+{\begin{tabular}{ll} }{\end{tabular}}
+
+\newenvironment{lista}[1]%
+{\section*{#1}}{}
+\newenvironment{litenlista}[1]%
+{\section*{#1}\begin{tabular}{ll}}{\end{tabular}}

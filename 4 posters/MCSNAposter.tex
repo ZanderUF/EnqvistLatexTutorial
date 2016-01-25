@@ -1,0 +1,510 @@
+\documentclass[landscape,a0,final,a4resizeable]{a0poster}
+%\documentclass[landscape,a0,final]{a0poster}
+%\documentclass[portrait,a0b,final,a4resizeable]{a0poster}
+%\documentclass[portrait,a0b,final]{a0poster}
+%%% Option "a4resizeable" makes it possible ot resize the
+%   poster by the command: psresize -pa4 poster.ps poster-a4.ps
+%   For final printing, please remove option "a4resizeable" !!
+
+\usepackage{epsfig}
+\usepackage{multicol}
+\usepackage{pstricks,pst-grad}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition of some variables and colors
+%\renewcommand{\rho}{\varrho}
+%\renewcommand{\phi}{\varphi}
+\setlength{\columnsep}{3cm}
+\setlength{\columnseprule}{2mm}
+\setlength{\parindent}{0.0cm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%               Background                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\background}[3]{
+  \newrgbcolor{cgradbegin}{#1}
+  \newrgbcolor{cgradend}{#2}
+  \psframe[fillstyle=gradient,gradend=cgradend,
+  gradbegin=cgradbegin,gradmidpoint=#3](0.,0.)(1.\textwidth,-1.\textheight)
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                Poster                        %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{poster}{
+  \begin{center}
+  \begin{minipage}[c]{0.98\textwidth}
+}{
+  \end{minipage}
+  \end{center}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                pcolumn                       %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{pcolumn}[1]{
+  \begin{minipage}{#1\textwidth}
+  \begin{center}
+}{
+  \end{center}
+  \end{minipage}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                pbox                          %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newrgbcolor{lcolor}{0. 0. 0.80}
+\newrgbcolor{gcolor1}{1. 1. 1.}
+\newrgbcolor{gcolor2}{.80 .80 1.}
+
+\newcommand{\pbox}[4]{
+\psshadowbox[#3]{
+\begin{minipage}[t][#2][t]{#1}
+#4
+\end{minipage}
+}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                myfig                         %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \myfig - replacement for \figure
+% necessary, since in multicol-environment
+% \figure won't work
+
+\newcommand{\myfig}[3][0]{
+\begin{center}
+  \vspace{1.5cm}
+  \includegraphics[width=#3\hsize,angle=#1]{#2}
+  \nobreak\medskip
+\end{center}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%                mycaption                     %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \mycaption - replacement for \caption
+% necessary, since in multicol-environment \figure and
+% therefore \caption won't work
+
+%\newcounter{figure}
+\setcounter{figure}{1}
+\newcommand{\mycaption}[1]{
+  \vspace{0.5cm}
+  \begin{quote}
+    {{\sc Figure} \arabic{figure}: #1}
+  \end{quote}
+  \vspace{1cm}
+  \stepcounter{figure}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Begin of Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\background{1. 1. 1.}{1. 1. 1.}{0.5}
+
+\vspace*{2cm}
+
+
+\newrgbcolor{lightblue}{0. 0. 0.80}
+\newrgbcolor{white}{1. 1. 1.}
+\newrgbcolor{whiteblue}{.80 .80 1.}
+
+\begin{poster}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Header
+%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\begin{pcolumn}{0.98}
+
+\pbox{0.95\textwidth}{}{linewidth=2mm,framearc=0.3,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{
+
+%%% Unisiegel
+\begin{minipage}[c][9cm][c]{0.1\textwidth}
+  \begin{center}
+    \includegraphics[width=7cm,angle=0]{bild70mm.ps}
+  \end{center}
+\end{minipage}
+%%% Titel
+\begin{minipage}[c][9cm][c]{0.78\textwidth}
+  \begin{center}
+    {\sc \Huge Statistics of the neutrons and gamma photons emitted from a fissile \\[6mm]
+    sample with absorption}\\[10mm]
+    {\Large A. Enqvist$^{a}$, I. P\'azsit$^{a}$ and S. A. Pozzi$^{b}$\\[7.5mm]
+    $^{a}$Department of Nuclear Engineering, Chalmers University of Technology, G\"oteborg,
+    Sweden, $^{b}$Oak Ridge National Laboratory, Oak Ridge TN, USA}
+%    Institute of Poster--Design, University, Your City, Country}
+  \end{center}
+\end{minipage}
+%%% GK-Logo
+\begin{minipage}[c][9cm][c]{0.1\textwidth}
+  \begin{center}
+    \includegraphics[width=11cm,angle=0]{Graphictest.eps}
+  \end{center}
+\end{minipage}
+
+}
+\end{pcolumn}
+\end{center}
+
+
+\vspace*{2cm}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%
+%%% Content
+%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% Begin of Multicols-Enviroment
+\begin{multicols}{4}
+
+%\small %\bf
+%%% Abstract
+\begin{center}\pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{\begin{center}\Large \bf Introduction\end{center}}\end{center}
+\vspace{1.25cm}
+
+This work investigates an analytical derivation of the
+distribution of the number of neutrons and photons emitted by a
+multiplying sample. The relationship between the statistics of the
+generated and detected neutrons and photons is also described. The
+analytical model described in this paper accounts for absorption
+and detection, thus extending the model presented in previous
+studies. By using this new, improved model, one can investigate
+the relative feasibilities of measuring neutrons or gamma photons
+for the analysis of a specific fissile sample. In fact, larger
+mass will lead to larger self-shielding for gamma photons, whereas
+for neutrons a larger mass will lead to increased multiplicities
+due to an increased probability to induce fission for each
+neutron, with absorption playing a minor role. The results suggest
+that although photons have a larger initial (source)
+multiplication, neutrons might be more favourable to measure in
+the case of large samples because of the increasing self-shielding
+effect for gamma photons.
+
+%For fissile samples the heavy isotopes will have a large
+%absorption of photons that increase with sample mass. This
+%self-shielding effect will lower the number of emitted photons
+%from the sample so drastically that for more massive samples it
+%becomes favourable to examine samples using neutrons instead of
+%photons in coincidence and multiplicity measurements
+
+
+%%% Introduction
+\vspace{2cm}\begin{center}\pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{\begin{center}\Large
+\bf Theoretical Treatment of Neutrons
+\end{center}}\end{center}\vspace{1.25cm}
+
+In non-destructive assay of nuclear material the statistics of the
+number distribution of neutrons and gamma rays emitted by fissile
+samples play an important role. For fissile samples the key
+processes regarding the distributions are: \vspace{5mm}
+\begin{quote}
+\begin{itemize}
+    \item Spontaneous fission. \par
+
+    \item Induced fission.
+
+    \item Change of multiplicities due to:
+    \begin{itemize}
+
+    \item Induced fission.
+
+    \item Absorption.
+
+    \item The process of detection
+\end{itemize}
+
+    \item Multiplicities and coincidences can give isotopic composition and mass of the sample.
+\end{itemize}
+\end{quote}
+\vspace{5mm} With the help of master equations one can write down
+relationships describing the generating functions of the number
+distribution. For a model including absorption but not detection
+the equations read as:
+\begin{equation}
+\label{eq:hz} h(z)=(1-p')z+ p' \widetilde{q}_f[h(z)],
+\end{equation}
+\begin{equation}
+\label{eq:Hz} H(z)=q_s[h(z)].
+\end{equation}
+Here the number distribution is taken for one initial neutron or
+one initial neutron event:
+\begin{equation}
+\label{eq:probp} p_1(n) = \left.\frac{1}{n!}
+\frac{d^{n}h(z)}{dz^{n}} \right|_{z=0} \quad \mbox{and} \quad P(n)
+= \left.\frac{1}{n!} \frac{d^{n}H(z)}{dz^{n}} \right|_{z=0}.
+\end{equation}
+Compared to factorial moments which are also calculated from
+probability generating functions, but at $z=1$, we can note a few
+differences: \vspace{5mm}
+\begin{quote}
+\begin{itemize}
+\item Calculated at $z=0$, more terms than for multiplicities.
+
+\item Nested functions, lower order derivatives recurring.
+
+\item Longer expressions, which on the other hand can be expressed
+recursively
+\end{itemize}
+\end{quote}
+\vspace{5mm}
+
+The process of detection can be accounted for by the use of the
+generating function $\varepsilon(z)$ of the binary probability
+distribution of the number of neutrons detected per leaked
+neutron:
+\begin{equation}
+\label{eq:ez} \varepsilon(z)=\epsilon z + (1-\epsilon).
+\end{equation}
+This model accounts for detection as one stochastic variable, and
+is most easily thought of as a general detection efficiency for a
+detector surrounding the sample, such as a multiplicity counter.
+With some alterations one could use this model for finding
+statistics for other detector setups as well.
+
+Calculation of high order terms in the distribution requires high
+order derivations of nested implicit functions.
+\begin{quote}
+\begin{itemize}
+\item Symbolic derivations.
+
+\item Using the symbolic language Mathematica.
+
+\item Reevaluations fast due to symbolic expressions.
+\end{itemize}
+\end{quote}
+
+%%% Introduction
+\vspace{2cm}\begin{center}\pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{\begin{center}\Large
+\bf Theoretical Treatment of Photons
+\end{center}}\end{center}\vspace{1.25cm}
+
+
+The generation of gamma photons is a more intricate process since
+it is connected to the multiplication of neutrons and does not
+have any self-multiplication. When incorporating absorption there
+are a number of effects for the photons when looking at the main
+parameter of the system which is the sample mass: \vspace{5mm}
+\begin{quote}
+\begin{itemize}
+\item Increased mass means increased probability to induce
+fission.
+
+\item Absorption of neutrons lowers the number of induced
+fissions.
+
+\item Absorption of photons means that fewer photons escape the
+sample and the number of visible photons decrease.
+\end{itemize}
+\end{quote}
+\vspace{5mm} The master equations for gamma photons generated
+within the sample read as follows:
+\begin{equation}
+\label{eq:gz} g(z)=(1-p)+ p \, r_f(z) \, q_f[g(z)],
+\end{equation}
+\begin{equation}
+\label{eq:Gz} G(z)=r_s(z) \, q_s[g(z)].
+\end{equation}
+For describing the process of photon detection a few changes needs
+to be made: \vspace{0.5cm}
+\begin{quote}
+\begin{itemize}
+\item Need to account for absorption.
+
+\item Need to account for detection.
+
+\item The form of the equations need to be kept to find the
+distributions easily.
+\end{itemize}
+\end{quote} \vspace{0.5cm}
+All this is accomplished by the use of two extra equations:
+\begin{equation}
+\label{eq:lz} l(z)=l_{\gamma} z + (1-l_{\gamma}),
+\end{equation}
+\begin{equation}
+\label{eq:egz} \varepsilon_{\gamma}(z)=\epsilon_{\gamma} z +
+(1-\epsilon_{\gamma}).
+\end{equation}
+Here $l(z)$ comes from a master equation describing whether a
+photon is absorbed or not with a special leakage probability
+$l_{\gamma}$ which depends on the sample size, while
+$\varepsilon_{\gamma}(z)$ describes the detection process with the
+use of a detection efficiency $\epsilon_{\gamma}$ for detecting a
+photon. Using these in the previous equations gives us the coupled
+master equations used for finding the distribution of the
+detections statistics:
+\begin{equation}
+\label{eq:gd} g_d(z) = g\big[l \{\varepsilon(z)\}\big] \quad ,
+\quad G_d(z) =
+ G\big[l \{\varepsilon(z)\}\big].
+\end{equation}
+The way the absorption and detection is put into the equations
+makes the change in factorial moments very easy, we get the
+leakage and detection probability raised to the same power as the
+order of the moment enters the expression, and lower the numerical
+values of the factorial moments.
+
+
+%%% Section
+\vspace{2cm}\begin{center}\pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{\begin{center}\Large
+\bf Results \end{center}}\end{center}\vspace{1.25cm}
+
+\vspace{-2.0cm}
+%%% Figures:
+\begin{center}
+  % first argument: eps-file
+  % second argument: stretching-factor relative to Column-width (<1)
+  % optional argument: rotation angle (0-360), default=0
+  \myfig{detneutBIG.eps}{0.7}
+  \mycaption{The statistics for neutrons when a detection
+efficiency of 50\% is incorporated into the model. The plot shows
+that the statistics change and the likelihood of low detection
+numbers are higher compared to how many bursts there are of that
+multiplicity from the sample. This case is most representative for
+a multiplicity counter that has a high total detection efficiency.
+Samples contained 80 wt\% Pu-239 and 20 wt\% Pu-240.}
+\end{center}
+
+\vspace{-2.0cm}
+\begin{center}
+  % first argument: eps-file
+  % second argument: stretching-factor relative to Column-width (<1)
+  % optional argument: rotation angle (0-360), default=0
+  \myfig{detgammaBIG.eps}{0.7}
+  \mycaption{The statistics for photons when a detection
+efficiency of 50\% is incorporated into the model (analytical),
+compared to the MCNP-PoliMi results for generated photons.
+Similarly to the inclusion of absorption the inclusion of the
+detection process lowers the probabilities of observing high
+multiplicities.}
+\end{center}
+
+The analytical expressions derived for the number distribution
+were evaluated using the nuclear data taken from the Monte Carlo
+code MCNP-PoliMi. For neutrons, inclusion of the absorption does
+not affect the probabilities in a significant way compared to the
+non-absorbing case. This is to be expected for the samples
+investigated in this work since they are comprised of high-$Z$
+material. The three samples investigated were of different masses
+with a mix of 80 wt\% Pu-239 and 20 wt\% Pu-240. A much larger
+effect is seen when incorporating a detection efficiency. If it is
+low, then probabilities to see several neutrons decrease
+drastically even when considering high multiplicities in big
+samples.
+
+
+%%% Section
+%\vspace{2cm}\begin{center}\pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{\begin{center}\Large
+%\bf Numerical Treatment - Photons\end{center}}\end{center}
+%\vspace{1.25cm}
+
+\vspace{-1.5cm}
+%%% Figures:
+\begin{center}
+  % first argument: eps-file
+  % second argument: stretching-factor relative to Column-width (<1)
+  % optional argument: rotation angle (0-360), default=0
+  \myfig{MCgraph.eps}{0.9}
+  \mycaption{The detection statistics calculated for a setup of
+  six scintillator detectors sensitive to both photons and neutrons,
+  with detection efficiencies of 0.00546 and 0.00549 for neutrons
+  and photons respectively. MCNP-PoliMi was used to generate these
+  results for a 9.00 kg sample of 80 wt\% Pu-239 and 20 wt\% Pu-240.}
+\end{center}
+\vspace{-0.5cm}
+
+For photons the effect of absorption is very big and one can see a
+massive effect of the self-shielding in all samples. Looking at
+what happens in different sample masses the following can be
+observed:
+%\vspace{5mm}
+\begin{quote}
+\begin{itemize}
+    \item Larger mass means higher numbers of neutrons and photons are
+    generated.
+
+    \item Heavier mass means more shielding for the photons.
+
+    \item The combined effect is dominated by the shielding.
+
+    \item Smaller samples have larger numbers of photons escaping
+compared to larger samples per initial source event.
+\end{itemize}
+\end{quote}
+%\vspace{5mm}
+The effect of detection is straight-forward and seen as an
+attenuation of the probabilities in much the same way as the
+absorption, with the change that the absorption is different for
+different sample masses, while the detection has the same effect
+for all masses, since the detection efficiency is the same.
+
+%%% Section
+\vspace{2cm}\begin{center}\pbox{0.8\columnwidth}{}{linewidth=2mm,framearc=0.1,linecolor=lightblue,fillstyle=gradient,gradangle=0,gradbegin=white,gradend=whiteblue,gradmidpoint=1.0,framesep=1em}{\begin{center}\Large
+\bf Conclusions\end{center}}\end{center}\vspace{1.25cm}
+
+
+We have used the symbolic computation code Mathematica to
+calculate high order terms of the number distribution of neutrons
+and photons from fissile samples with the inclusion of absorption.
+The results show that when absorption is accounted for, the number
+of photons emerging from the sample will decrease significantly,
+whereas the neutrons are not affected to the same extent. The
+multiplicities of photons leaving the sample could decrease so
+much that neutron multiplicities become higher. With the
+introduction of the detection process into the model of the leaked
+neutrons and photons, it is possible to simulate the detector
+response and find the probabilities for different multiplicities
+of both neutrons and photons. Using this information, one could
+assess different sample masses with regards to what type of
+emission has the higher multiplicity when using detectors for
+non-destructive assay of the material.
+
+% By introducing absorption into the models describing the
+%number distribution of neutrons and gamma photons emitted from a
+%fissile sample, one can obtain the actual number of escaped
+%neutrons and photons which are available for detection. The
+%results show that the absorption in a plutonium sample will have a
+%much larger effect on photons as compared to neutrons. This means
+%that there is a mass limit, above which neutrons become a better
+%tool for NDA-studies for heavy samples. The change for factorial
+%moments is very straightforward in the case of photons where a
+%leakage probability, raised to the same power as the order of the
+%factorial moment, decreases the numerical values of the factorial
+%moments.
+
+
+
+%%% References
+%\bibliographystyle{alpha}
+%\bibliography{poster.bib}
+
+
+\end{multicols}
+
+\end{poster}
+
+\end{document}

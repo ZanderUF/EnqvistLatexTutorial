@@ -1,0 +1,816 @@
+\documentclass[11pt,twoside]{article}  %might need to use this
+%             version on computers with other TeX-distributions,
+%             frontpage might look odd, but text should work.
+\usepackage[T1]{fontenc}
+
+\usepackage{tabls}
+\usepackage{afterpage}
+\usepackage{amsmath}
+\usepackage[dvips]{graphicx}
+\usepackage{subfigure}
+\usepackage{here}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{lastpage} % total page count
+%\usepackage{cites}
+%\usepackage{epsf}
+
+%\usepackage{pspalatino}
+%\usepackage{palatino}
+%\usepackage{times}
+\usepackage{pslatex}
+%\usepackage{mathtime}
+%\usepackage[figuresright]{rotating}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.0in}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\hoffset}{0pt}
+\setlength{\topmargin}{16pt}
+\setlength{\headsep}{16.8pt}
+\setlength{\headheight}{14pt}
+\setlength{\footskip}{0.4in}
+
+
+
+% Nicer headers and footers
+%
+% \fancyhead[L/C/R]{} to change headers
+% \fancyfoot[L/C/R]{} to change footers
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand{\authorHead}      % Author's names here
+   {Andreas Enqvist, Marek Flaska, Sara A. Pozzi, Jennifer L. Dolan and David L. Chichester}
+\newcommand{\shortTitle}      % Short title here
+   {Evaluation of a Combined Neutron and Gamma-Ray Multiplicity Counting System}
+\fancyhf{}
+
+\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   BEGIN DOCUMENT
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\thispagestyle{empty}  %added due to header changes (no header on title page, looks better)
+
+\afterpage{               %Remove/comment out the whole section if you have no desire to use headers/footers
+\fancyhead[CO]{   %Centered header on ODD! pages
+{\scriptsize \shortTitle}}
+\fancyhead[CE]{    %Centered header on EVEN! pages, to make the same use:  "\fancyhead[CE,CO]{..." or just "\fancyhead[C]{...."
+{\scriptsize \authorHead}}
+\fancyfoot[CO,CE] {\thepage}                        %page number  "X"
+%\fancyfoot[CO,CE] {\thepage/\pageref{LastPage}}    % page number as "X/YY"
+\pagestyle{fancy}
+}
+
+\begin{center}
+
+
+  \textbf{\Large{Evaluation of a Combined Neutron and Gamma-Ray Multiplicity  \\ \vspace{2mm}Counting System }} % \\ \vspace{2mm} }}
+
+ \vspace{0.4 cm}
+
+  Andreas Enqvist\footnote{Corresponding author (\texttt{enqvist@umich.edu}).}$^{a}$, Marek Flaska$^{a}$, Sara A. Pozzi$^{a}$, Jennifer L. Dolan$^{a}$ and David L. Chichester$^{b}$
+\vspace{0.2 cm}
+
+  $^{a}$Department of Nuclear Engineering and Radiological Sciences, University of Michigan, Ann Arbor, MI 48109, USA\\
+  $^{b}$Idaho National Laboratory, Idaho Falls, ID 83415
+
+  \vspace{0.3 cm} % Vertical space
+
+  %\includegraphics[width=10cm]{nice.eps}
+
+  \ % Empty paragraph
+
+\end{center}
+
+
+
+\begin{abstract}
+
+Multiplicity counters for neutron assay have been extensively used
+in materials control and accountability for nonproliferation and
+nuclear safeguards. Typically, neutron coincidence counters are
+utilized in these fields. In this paper we present a measurement
+system that makes use not only of neutron (n) multiplicity
+counting but also of gamma ray ($\gamma$) multiplicity counting
+and the combined higher-order multiplets containing both neutrons
+and gamma rays. The benefit of this approach is in using both
+particle types available from the sample, leading to a reduction
+in measurement time when using more measurables. We present
+measurement results of n, $\gamma$, nn, n$\gamma$, $\gamma\gamma$,
+nnn, nn$\gamma$, n$\gamma\gamma$ and $\gamma\gamma\gamma$
+multiplets emitted by a $^{252}$Cf source. Additionally, the system was also tested using a much more complex source in the form of MOX fuel pins. Such a complex source can more easily reveal short comings and complications of the system. The dual radiation measuring system proposed here can use
+extra measurables either to improve the statistics when compared
+to a neutron-only system, or alternatively be used for extended
+analysis and interpretation of sample parameters.
+
+The study presented here provides an answer to the questions
+regarding the ability to measure both neutron and gamma ray
+coincidences at once. The results show that the measurements
+system proposed in this study has a potential to be valuable in
+the area of nuclear nonproliferation and homeland security.
+
+\end{abstract}
+
+\emph{Key Words}: nuclear nonproliferation, pulse shape discrimination,
+liquid scintillation detectors, multiplicity counting, coincidences.
+
+
+% main text
+\section{Introduction}
+\label{Introduction}
+
+Neutron multiplicity counters have been used for several decades,
+mostly as thermal multiplicity counters based on $^{3}$He
+detectors \cite{ensslin98} or as counters with slightly wider
+neutron energy ranges \cite{ENMC}. These systems have very good
+detection efficiency; however, the time resolution suffers from the
+required moderation of the neutrons. A number of new measurement
+options have recently become available with the advancements in
+applying organic liquid scintillation detectors within the areas
+of nuclear nonproliferation and materials control and
+accountability and with the developments in fast digitizer
+technology.
+
+Organic scintillation detectors can provide some energy
+spectroscopy \cite{Klein} as well as excellent die-away
+properties, thus reducing the number of accidentals in
+measurements. Furthermore, the pulse shape can be used to
+discriminate between different types of incoming radiation. For
+example, neutron pulses can be separated out from the gamma ray
+pulses. This means that data analysis techniques such as neutron
+spectrum unfolding from the measured pulse height distributions
+(PHDs) \cite{Xu,Reginatto} can be applied, even in the presence of
+gamma ray radiation.
+
+Recently, liquid scintillation detectors have been investigated
+for use in neutron multiplicity counters \cite{LSMC}. The main
+benefit of such a design is that it is much less sensitive to
+accidental coincidences than the traditional approach based on
+$^{3}$He detectors due to much faster time response. Thus, the liquid scintillators are suitable
+for use even on samples with high single-neutron background, such
+as ($\alpha$, n) rates exhibited in some samples containing different
+isotopes of plutonium. However, Frame et al. \cite{LSMC} estimated
+that such a system will have problems with neutron classification
+at energies below 2 MeV, as well as having a low total detection
+efficiency. Such problems might be corrected with alternative
+designs of the detector. It can be noted that all gamma ray
+pulses would be ignored in this type of design.
+
+Fission multiplicity counters \cite{Sher} use systems of plastic
+scintillation detectors sensitive to both fast neutrons and gamma
+rays. However, these counters offer no possibility of discriminating the
+gamma rays from the neutrons, thus only the total fission
+multiplicity is measured, rather than a neutron or gamma ray
+multiplicity. More recent developments, especially those using the
+Nuclear Materials Identification System \cite{NMIS}, allowed
+temporal discrimination of gamma rays from neutrons to further
+enhance the analysis of nuclear materials.
+
+%The gamma rays were not treated explicitly in the analysis that
+%relate the combined multiplicity to effective mass,
+%($\alpha,n$)-rate, multiplication and detection efficiency, so
+%only when using gamma ray shielding were the systems allowing
+%accurate multiplicity analysis.
+
+We suggest a novel approach for finding sample characteristics
+based on the use of multiple liquid scintillators, a fast
+digitizing system, and advanced analysis algorithms. The proposed
+system uses pulse shape discrimination (PSD) \cite{Flaska} to
+determine what particle caused the detection pulse. The excellent
+timing properties of liquid scintillators are used to find out
+what pulses are correlated in time and the particle types that
+created them. This approach has the benefit of providing more
+measurables compared to the case of pure neutron multiplicity
+counting, while having a few extra parameters - but not more than
+the amount of added measurables - which could be used in a number
+of ways to determine the sample characteristics
+\cite{PazPal08,AEP,EPA}.
+
+This paper describes the measurement system used for performing
+multiplicity measurements using neutron and gamma ray sources such
+as $^{252}$Cf and mixed-oxide fuel. The approach builds upon
+previously described cross-correlation measurements
+\cite{CC,Ispra}. The PSD will be described in detail as one of the
+key parameters for the investigation of the proposed approach. The
+results of initial assessment will then be discussed and future
+possible improvements along with potential drawbacks of the
+proposed system.
+
+
+\section{Description of Experimental Setup}
+\label{sec:Setup}
+
+The measurements were performed at the University of Michigan,
+Department of Nuclear Engineering and Radiological Sciences -
+where the measurement system was developed - and at Idaho National Laboratory (INL) during the summer of 2009. The
+measurement system consists of four EJ-309 cylindrical
+scintillation detectors with a height of 13.3~cm and a diameter of
+13~cm. This liquid has a high flash point (144 $^\circ$C), and low
+chemical toxicity.
+
+In the measurements (see the measurement setup in Fig. \ref{fig:setup}), the detectors were
+placed at 90 degrees with the source-detector distance kept
+constant. The data acquisition is performed with a 250-MHz,
+12-bit, 8-channel CAEN V1720 digitizer. Four channels were used,
+each being able to trigger independently on the incoming detector
+pulses. The data from all channels were stored and then
+subsequently analyzed to determine if any additional detectors, in
+addition to the trigger detector, contained time-correlated pulses.
+The detectors were calibrated using a $^{\textrm{137}}$Cs source.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=9cm]{SNC00110(2).eps}
+\caption{Measurement setup.}
+\label{fig:setup}
+\end{figure}
+
+A threshold of approximately 70 keVee corresponding to a neutron
+energy deposited of approximately 450 keV, was applied to achieve
+excellent PSD performance. The 70-keVee threshold was chosen based
+on previous investigations focused on the accuracy of particle
+discrimination. At this threshold, a gamma rejection of
+approximately 1/1000 is expected. The $^{252}$Cf source was placed
+at different distances to determine the effect of
+changing absolute detector efficiency, while the MOX measurement presented here were performed for a single larger distance with 5~cm lead shielding to
+suppress high gamma ray production. The count rates when using all
+four detectors varied from approximately 4.5~kHz to 15~kHz, with
+the background of approximately 1~kHz. The measurement setups
+were as follows:
+\begin{itemize}
+\item $^{252}$Cf, 15~cm source--detector distance,
+
+\item $^{252}$Cf, 20~cm source--detector distance,
+
+\item $^{252}$Cf, 30~cm source--detector distance,
+
+\item 100 MOX fuel pins shielded with 5~cm of lead, 40~cm
+    source--detector distance.
+\end{itemize}
+The measurement times varied between 10 and 30 minutes resulting
+in approximately 10 million recorded events per setup.
+
+
+\section{Pulse Shape Discrimination and Pulse Timing}
+\label{sec:PSD}
+
+PSD and pulse timing are performed with an offline algorithm.
+Traditionally, PSD can be performed based on charge integration or
+differentiation \cite{Adams,Sperr}. In previous work, we have used
+charge integration and analyzed the tail-to-total integral ratio
+versus pulse height \cite{CC}. In this work, the total integral is
+calculated from the start of the pulse to 220~ns past the pulse
+maximum, while the tail integral is calculated from 20~ns to
+220~ns past the pulse maximum. These values were previously
+determined by analyzing the figure of merit for the PSD as a
+function of the time ranges for the pulse integration.
+
+%\begin{figure}%[htb]
+%\begin{center}
+%  % Requires \usepackage{graphicx}
+% \subfigure[Full range.]{\label{fig:PSDf}
+%\includegraphics[width=7cm]{PSDfull2.eps}}\vspace{-2mm} \\
+% \subfigure[Zoomed in.]{\label{fig:PSDz}
+%\includegraphics[width=7cm]{PSDzoom.eps}}\vspace{-2mm}
+%%  \includegraphics[width=7.5cm]{2colltot1a.eps} \\
+%%  \includegraphics[width=7.5cm]{figures/2colltot10b.eps}\\ %\vspace{-9mm}
+%\caption{Tail vs. total integrals for a $^{252}$Cf measurement.
+%The data shown are for a single EJ-309 detector, and the discrimination line
+%indicates which pulses are created by neutrons (above the line) and by gamma rays (below the line).}
+%\label{fig:PSD}
+%\end{center}
+%\end{figure}
+
+%A linear discrimination boundary is used to discriminate neutrons
+%from gamma rays (Fig. \ref{fig:PSD}). This method show high
+%accuracy, but can unfortunately not be quantified with simple
+%figures of merit (FOM) due to the nonlinear discrimination curve
+%chosen. The FOM is defined as follows: FOM = distance between
+%peaks of neutron and gamma distributions / (FWHM$_{\gamma}$ +
+%FWHM$_{neutron}$)
+
+Pulse timing is performed on the digitized pulse data by
+simulating a constant fraction discriminator where the the start
+of the pulse is defined as a fixed percent of the peak value. The timing is
+then less sensitive to the pulse amplitude. Using interpolation
+between the data values allows for increased time resolution from
+the initial 4~ns to approximately 1~ns. The sharp rise of the
+pulse edge means linear interpolation can be used without large
+losses of accuracy. The gamma ray--gamma ray peak in the
+cross-correlation measurements was used to test the timing
+accuracy and a FWHM of less than 1.5~ns was observed.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=10.5cm]{pulsesamples.eps}
+\caption{Sample pulses from the data-acquisition system.}
+\label{fig:pulses}
+\end{figure}
+
+
+\section{Neutron and Gamma Ray Multiplicities} \label{sec:ngmult}
+
+%In a $^{3}$He based neutron multiplicity counter, there is no
+%concept of energy threshold since the neutrons are not detected at
+%their initial energy but instead needs to be moderated to lower
+%energies first. The proposed system however which depends on
+%scattering in the scintillation detectors have a certain
+%threshold, and for this type of system to be utilizable
+%measurements were done to find all 9 multiples up to third order,
+%and verifying that it can be done successfully for a fissile
+%sample.
+
+The benefit of the proposed system is its speed and robustness
+which is due to the fact that several quantities are measured
+(nine multiplets up to the third order). Further, the system
+operates on short time scales (300~ns is the width of a typical
+pulse) due to the removal of neutron moderation when compared to a
+$^{3}$He neutron multiplicity counter. While a $^{3}$He counter
+design usually encompasses the entire sample to maximize the
+neutron moderation and consequently the detection efficiency, a
+scintillation system could be made with a sparse layout and thus
+be a candidate for a portable system. Such a design requires that
+detection rates of multiplets are sufficiently high even with
+relatively low absolute detector efficiency. For allowing the
+unfolding of sample parameters such as proposed in \cite{AEP},
+successful measurement systems for all the multiplets need to be
+devised.
+
+
+\subsection{Measurement Results and Discussion} \label{sec:Meas}
+
+The measurements were performed with a $^{252}$Cf source producing
+19500 fissions/second \cite{Valentine99} and a shielded MOX container. All pulses that could constitute a real
+coincidence, considering time of flight for the neutrons and the
+total size of the system (up to approximately 50-ns difference),
+are fully registered with the digitizer in a window of 400~ns (100
+sampling points).
+
+Table \ref{tab:Cf} shows the measured rates of multiplets for
+various source--detector distances from the $^{252}$Cf source. The
+results indicate that for measurement times in the order of a few
+minutes good accuracy for the singlet and doublet rates can be
+achieved.
+
+\subsection{Measurements with $^{252}$Cf} \label{sec:MeasCf}
+
+%\begin{table}
+%  \centering
+%\begin{tabular}{|l|r|r|r|}
+%  \hline
+%  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+%\multicolumn{4}{|c|}{Count rates:}    \\     \hline
+%& 30cm & 20cm & 15cm    \\     \hline
+%$R_{n}$  & 690.4 & 1338.6 & 1947.4    \\
+%$R_{p}$  & 3119.9 & 5335.6 & 7256.6    \\
+%$R_{nn}$  &  13.26 &   51.46 &  114.3    \\
+%$R_{np}$  &  52.31 &  197.3 &  409.3    \\
+%$R_{pp}$  &  63.36 &  227.7 &  455.0    \\
+%$R_{nnn}$  &  0.101 &   0.802 &   2.959    \\
+%$R_{nnp}$  &  0.645 &   5.503 &   18.72    \\
+%$R_{npp}$  &  1.540 &   12.01 &   38.72    \\
+%$R_{ppp}$  &  1.179 &   8.803 &   27.04 \\ \hline
+%\multicolumn{4}{|c|}{Measurement time (s):}\\  \hline
+% & 1735.8 & 1475.3 & 1054.6  \\  \hline
+%\end{tabular}
+%\caption{$^{252}$Cf count rates for different source--detector
+%distances.}\label{tab:Cf}
+%\end{table}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=10.5cm]{rates3.eps}
+\caption{Detection rates of different multiplets at different
+distances for the $^{252}$Cf source.}
+\label{fig:rates}
+\end{figure}
+
+\begin{table}
+  \centering
+\begin{tabular}{|l|r|r||r|r||r|r|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{7}{|c|}{Count rates (s$^{-1}$) and statistical errors:}    \\     \hline
+& 30cm & $\pm 1 \sigma$ & 20cm & $\pm 1 \sigma$  & 15cm & $\pm 1 \sigma$   \\     \hline
+$R_{n}$  & 690.4 & 0.63 & 1338.6 & 0.95 & 1947.4  & 1.36    \\
+$R_{\gamma}$  & 3119.9 & 1.34 & 5335.6 & 1.90 & 7256.6 & 2.62    \\
+$R_{nn}$  &  13.3 & 0.09 & 51.5 & 0.19 &  114.3 & 0.33    \\
+$R_{n\gamma}$  &  52.3 & 0.17 & 197.3 & 0.37 &  409.3 & 0.62    \\
+$R_{\gamma\gamma}$  &  63.4 & 0.19 & 227.7 & 0.39 &  455.0 & 0.66    \\
+$R_{nnn}$  &  0.1 & 0.01 &   0.8 & 0.02 &   3.0   & 0.05   \\
+$R_{nn\gamma}$  &  0.6 & 0.02 &   5.5 & 0.06 &   18.7   & 0.13  \\
+$R_{n\gamma\gamma}$  &  1.5 & 0.03 &   12.0 & 0.09 &   38.7   & 0.19   \\
+$R_{\gamma\gamma\gamma}$  &  1.2 & 0.03 &   8.8 & 0.08 &   27.0   & 0.16 \\ \hline
+& \multicolumn{6}{|c|}{Measurement time (s):}\\  \cline{1-7}
+\,\,\, $T$ & \multicolumn{2}{|c||}{1735.8} & \multicolumn{2}{|c||}{1475.3} & \multicolumn{2}{|c|}{1054.6} \\ \cline{1-7}
+\end{tabular}
+\caption{$^{252}$Cf count rates for different source--detector
+distances and all possible neutron, gamma ray and mixed multiplets
+up to the third order. The statistical error is calculated as the
+square root of the total counts divided by the total measurement
+time.}\label{tab:Cf}
+\end{table}
+
+
+\begin{table}
+  \centering
+\begin{tabular}{|l|r|r|r|}
+  \hline
+%  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{4}{|c|}{Ratios:}   \\     \hline
+ & 30cm & 20cm & 15cm\\     \hline
+$R_{n}/R_{nn}$  & 52.1 & 26.0 & 17.0      \\
+$R_{n}/R_{nnn}$   & 6809.3 & 1669.3 & 658.2   \\
+$R_{nn}/R_{nnn}$  & 130.7 & 64.2 & 38.6   \\
+$R_{\gamma}/R_{\gamma\gamma}$   & 49.2 & 23.4 & 15.9   \\
+$R_{\gamma}/R_{\gamma\gamma\gamma}$   & 2646.8 & 606.1 & 268.4  \\
+$R_{\gamma\gamma}/R_{\gamma\gamma\gamma}$  & 53.7 & 25.9 & 16.8 \\
+$R_{n}/R_{\gamma}$   & 0.22 &  0.25 & 0.27 \\
+$R_{nn}/R_{\gamma\gamma}$  & 0.21 & 0.23 & 0.25  \\
+$R_{nnn}/R_{\gamma\gamma\gamma}$  & 0.09 & 0.09 & 0.11 \\ \hline
+\end{tabular}
+\caption{Different $^{252}$Cf ratios of the count rates could be
+used to obtain geometrical information.}\label{tab:ratio}
+\end{table}
+
+%The analysis scripts used to analyze the data and classify the
+%multiples have computing times on the order of one to a few
+%minutes which is less than the actual measurement times. It would
+%be beneficial to run them simultaneously with the data
+%acquisition, however that is not currently possible due to the
+%extra strain that it puts on the computer system. This is one of
+%the possible improvements that could be addressed in future work.
+
+
+
+The rates of the different multiplets for the $^{252}$Cf source
+are shown in Fig. \ref{fig:rates}. It is evident that the
+source--detector distance has a large impact on the higher-order
+multiplets, which increase by more than an order of magnitude when
+the distance is decreased from 30~cm to 15~cm. With reduced
+distance, the rate of the higher-order multiplets increases more
+than the total count rate at the largest distance. Optimal rates
+are considered those where the measurement uncertainty for the
+high-order multiplets is low (acceptable) for reasonably short
+measurement times. With detection rates for gamma rays being
+higher, this might indicate that the minimum detectable activity
+could be reduced when also accounting for gamma multiplets
+compared to pure neutron multiplicity.
+
+Table \ref{tab:ratio} reports a number of the ratios of rates that
+could be of interest, such as ratios between different multiplets
+of neutrons, which show the strong dependence on absolute detector
+efficiency with varying distance. More intricate ratios such as
+those between the same multiplet of neutrons and gamma rays could
+be used for possible PSD error analysis. It has been noticed in the measurements that the neutron--neutron (nn) doublets are
+clearly depending on the orientation of the detectors, with
+opposing detectors recording more than 50\% more nn doublets compared
+to adjacent detectors. This corresponds well with the findings in
+Ref. \cite{Aniso}.
+
+The values of the ratios $R_{n}/R_{\gamma}$,
+$R_{nn}/R_{\gamma\gamma}$, $R_{nnn}/R_{\gamma\gamma\gamma}$ should
+be also emphasized, because they are almost independent of
+the source--detector distance. However, they do change depending
+on if they are the singlet, doublet, or triplet neutron to gamma
+ray ratios, since the number of gamma rays and neutrons produced
+per single fission significantly varies. Specifically, up to 20
+gamma rays, 10 neutrons can be emitted from a single fission,
+which can significantly change the above mentioned ratios. With
+the spontaneous-fission distribution of different isotopes being
+different, this set of ratio values could be used for isotopic
+determination. The singlet ratios also depend on the existence of
+($\alpha$, n) events, which needs to be taken into account for the
+potential identification of the isotopes present in the measured
+sample.
+
+One particular character of the multiplets is the behaviour of
+their magnitude when neutrons are successively replaced by gamma
+rays in the same order of multiplet. This can be easily seen in
+Table \ref{tab:Cf} and especially in Fig. \ref{fig:rates}, since
+the values are arranged just in this order. For the doublets,
+starting with the pure neutron doublet, replacing a neutron with a
+gamma ray always leads to a higher value, although the increase is
+smaller in the second step than in the first. For the triplets,
+the change of the magnitude is not monotonic; the magnitude of the
+pure gamma triplet rate is smaller than that of the  n$\gamma
+\gamma$ triplet rate. This shows the special value of the use of
+the mixed rates, as it was also mentioned in \cite{AEP,EPA}.
+
+\subsection{Measurements with MOX} \label{sec:MOX}
+
+The $^{252}$Cf source was useful for the initial test for the system, however if one wishes to use the system for assaying of ``real samples'' much more complicated compositions and radiological signatures might be encountered. To test how the data analysis copes with such a scenario, measurements of MOX samples performed at INL are used for the system testing.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=10cm]{fuelpins.eps}
+\caption{Canister of MOX fuel pins used in measurements taken at INL.}
+\label{fig:setup3}
+\end{figure}
+
+The MOX samples have a very different geometry compared to what a point-like $^{252}$Cf source has. Figure \ref{fig:setup3} shows the can in which up to 90 short fuel pins were contained. The sample was then placed in the center between four EJ-309 detectors located at right angles and with the same distance (40 cm) to the source (cf. Fig. \ref{fig:setup}). Due to the strong intrinsic source of gamma rays, the detectors were shielded with 5 cm of lead. This mimics detection of gamma rays present in shielded sources. Of the first 9 multiplicities 6 of them contain gamma rays, meaning that most of the detection rates will heavily suppressed.
+
+\begin{table}
+\centering
+\begin{tabular}{|l|r|r|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+\multicolumn{3}{|c|}{MOX (sample 129):} \\    \hline
+& Rate & $\pm 1 \sigma$ \\    \hline
+  $R_{n}$    & 4822.2 &    2.6  \\
+  $R_{\gamma}$  & 10027.1 &    3.7  \\
+  $R_{nn}$    &  21.92 &   0.17  \\
+  $R_{n\gamma}$   &  28.31 &   0.20  \\
+  $R_{\gamma\gamma}$  &  28.40 &   0.20  \\
+  $R_{nnn}$    &  0.094 &  0.011  \\
+  $R_{nn\gamma}$  &  0.105 &  0.012  \\
+  $R_{n\gamma\gamma}$  &  0.056 &  0.009  \\
+  $R_{\gamma\gamma\gamma}$ &  0.040 &  0.008  \\
+   \hline
+\end{tabular}
+\caption{Measured multiplet rates for 90 MOX pins at 40 cm distance. The total
+measurement time was 716 seconds.}\label{tab:MOX}
+\end{table}
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=10.5cm]{40cmMOX.eps}
+\caption{Detection rates for different multiplets for the MOX fuel pins source. Error bars ($\pm 1 \sigma$) are included but are very small except for the case of triplet rates.}
+\label{fig:ratesMOX}
+\end{figure}
+
+The measurement time was to 12 minutes; however, during that time a total of more than 10 millions events were recorded, meaning that the statistics of the singlet and doublet rates are good also after shorter measurements. In the case of the more rare triplet multiplets, there is the issue shielding in addition to larger source detector distance which also reduces the geometrical detector efficiency of the setup when compared to the previous californium measurements.
+
+It is obvious that rates can be also successfully acquired for the MOX sample. To reach the same low level of statistical uncertainty on the triplet rates as for the $^{252}$Cf would require a longer measurement time (also when normalizing to the same distance and relative source strength). As a rough indicator of the presence of lead shielding it can be noted that the ratio between neutron and gamma ray detection rates decreases for higher orders, which is the reverse behavior expected from the higher initial multiplicity of gamma rays from fission events: $R_{n}/R_{\gamma}= 0.48, R_{nn}/R_{\gamma\gamma}= 0.77, R_{nnn}/R_{\gamma\gamma\gamma}= 2.31$.
+
+%\subsection{Measurements with Pu-Be} \label{sec:MeasPuBe}
+%
+%Measurements were performed with a strong Pu-Be source, which
+%emits one neutron per ($\alpha$, n) reaction accompanied with one
+%or more gamma rays. The source also emits a large number of
+%uncorrelated gamma rays, which was the reason for placing 5 cm of
+%lead shielding around the source. Measurement results are given in
+%Table \ref{tab:PuBe}: as can be noted, very few multiplet above
+%the first order are detected. Even n$\gamma$ doublets which should
+%have high frequency in connection to the ($\alpha$, n) events, are
+%severely suppressed by the Pb shielding.
+%
+%Table \ref{tab:PuBe} shows that the singlets of neutrons and gamma
+%rays are very dominating, while triplets are essentially
+%non-existent due to the low number of correlated events. As
+%expected, measured singlet-to-doublet and singlet-to-triplet
+%ratios are much lower for the Pu-Be source than for the $^{252}$Cf
+%source, which is caused by lack of time-correlated detection
+%events. These quantities could be used as a quick estimate of
+%sample types, such as fissile versus non-fissile. In the case of
+%the fissile $^{252}$Cf source, the triplet rates are approximately
+%a factor 1000 lower than the singlet rates (see $R_{n}/R_{nnn}$
+%and $R_{\gamma}/R_{\gamma\gamma\gamma}$ in Table \ref{tab:ratio}),
+%while for the Pu-Be source, high-order correlated events are
+%almost nonexistent, and occur a factor 1,000,000 times more rarely
+%than a single event. In addition, other source properties such as
+%ratios of gamma rays to neutrons for different radiation shields
+%that would indicate the source type could be obtained. The
+%multiplicity system discussed here could be `calibrated' to allow
+%identification of various neutron and gamma ray sources and
+%nuclear materials. The additional benefit of measuring also gamma
+%rays could depend on the assayed material, making the approach
+%more suitable to some types of measurements.
+%
+%
+%\begin{table}
+%\centering
+%\begin{tabular}{|l|r|r|}
+%  \hline
+%  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+%\multicolumn{3}{|c|}{PuBu source:} \\    \hline
+%& Rate & $\pm 1 \sigma$ \\    \hline
+%  $R_{n}$    &     8160.3 & 3.2494 \\
+%  $R_{\gamma}$    &     3283.3 & 2.0611 \\
+%  $R_{nn}$   &     7.0647 & 0.0956 \\
+%  $R_{n\gamma}$   &     10.571 & 0.1170 \\
+%  $R_{\gamma\gamma}$   &     3.9179 & 0.0712 \\
+%  $R_{nnn}$   &     0.0013 & 0.0013 \\
+%  $R_{nn\gamma}$   &     0.0116 & 0.0039 \\
+%  $R_{n\gamma\gamma}$   &     0.0078 & 0.0032 \\
+%  $R_{\gamma\gamma\gamma}$   &     0.0103 & 0.0037 \\
+%  \hline
+%\end{tabular}
+%\caption{Measured multiplet rates for the Pu-Be source. The
+%measurement time was 772 seconds.}\label{tab:PuBe}
+%\end{table}
+%
+%\begin{figure}[!htb]
+%\centering
+%\includegraphics[width=8cm]{ratesPuBe2.eps}
+%\caption{Detection rates for different multiplets for the Pu-Be source.}
+%\label{fig:ratesPuBe}
+%\end{figure}
+
+
+
+
+\subsection{Analysis of PSD error}
+
+It is clear that the PSD performance is vital for the accuracy of
+the measurement method. Especially when looking at the higher
+order multiplets, the chance of it being wrongly classified
+increases with the amount of detector pulses that make up each
+specific multiple. There are some promising features of the system
+that could be used to both enhance the understanding of the PSD
+performance as well as create correction factors for improved
+assay which would not be available in previous liquid
+scintillation designs \cite{LSMC}. The effect of misclassification
+on the measured rates depends on the ratios of different
+multiplets, which in turn depends on detection efficiency, sample
+multiplicity distribution and shielding.
+
+Assume that the count rates are related as $R_{nnn} =
+0.1R_{nn\gamma} = 0.1R_{n\gamma\gamma} =
+0.1R_{\gamma\gamma\gamma}$, which is only a rough estimate of what
+was observed in the $^{252}$Cf measurements. It means that if 1\% of all pulses
+are misclassified the value of $R_{\gamma\gamma\gamma}$ will be
+underestimated by 2\%, while the $R_{nnn}$ value will be
+overestimated by 7\%. Similarly, if the PSD error is 5\% then the
+value of $R_{\gamma\gamma\gamma}$ could be off by 9.5\%, while the
+$R_{nnn}$ value could be off by 33\%. The values are related as
+follows:
+\begin{equation}\label{eq:Rnnn}
+R_{nnn} =  R'_{nnn}(1-\epsilon)^{3} + R'_{nn\gamma}\epsilon(1-\epsilon)^{2}
++ R'_{n\gamma\gamma}\epsilon^{2}(1-\epsilon)+ R'_{\gamma\gamma\gamma}\epsilon^{3},
+\end{equation}
+\begin{equation}\label{eq:Rppp}
+R_{\gamma\gamma\gamma} = R'_{\gamma\gamma\gamma}(1-\epsilon)^{3} +
+R'_{n\gamma\gamma}\epsilon(1-\epsilon)^{2} + R'_{nn\gamma}\epsilon^{2}(1-\epsilon)
++ R'_{nnn}\epsilon^{3},
+\end{equation}
+where $\epsilon$ is the PSD error and $R'_{xxx}$ are the real
+rates and $R_{xxx}$ are the measured rates.
+
+When considering a pure neutron multiplicity assay, the resulting
+errors on the measured rates would be high if the PSD error was
+very high, but with the additional information available, such as
+the additional count rates and ratios from the proposed method, it
+is possible to calculate correction factors for the $R_{n}, \,
+R_{nn}, \, R_{nnn}$ values. Designing calibration measurements
+that analyze the PSD error would be beneficial for further
+development of the applicability and accuracy of the proposed
+system.
+
+
+\section{Summary and Conclusions}
+\label{sec:Conclusions}
+
+The measurement system presented in this paper uses techniques
+that, when combined together, create a novel way of characterizing
+materials using both neutron and gamma ray multiplets. A study was
+performed to investigate the feasibility of the method, and to
+gain some insight on whether it is an applicable approach to
+materials identification and accounting.
+
+The measurement system is very accurate in discriminating the neutron pulses from the gamma ray
+pulses. This capability is vital for the correct classification of
+mixed particle multiplets. The initial tests have shown that the system can
+acquire rates of n, $\gamma$, nn, n$\gamma$, $\gamma\gamma$, nnn,
+nn$\gamma$, n$\gamma\gamma$ and $\gamma\gamma\gamma$ multiplets in
+a relatively short measurement time (10-30 minutes) for a $^{252}$Cf source with
+19500 fissions/s and a shielded MOX source. In the future, several
+aspects will be further investigated, including the number and
+configuration of detectors, and the possible utilization of
+shielding to avoid cross talk between detectors.
+
+It has been shown that a number of characteristic values can be
+obtained and ratios of the measured values can be used to assess
+the type of reactions causing the particle emission such as
+fission versus ($\alpha$, n) reaction. The measured rates obtained
+in the measurements are reasonable for the simple design of the current system. The data analysis
+shows that the ratios between rates could also be utilized as an
+indicator of source type and possibly also source isotope
+composition, once the analysis is extended in detail
+to the multiplicity theory.
+
+
+\section{Acknowledgments}
+
+The work of Andreas Enqvist was in part supported by the Swedish Radiation
+Safety Authority. Part of the work was supported by the U.S. Department of
+Energy Office of Nuclear Energy and the Advanced Fuel Cycle Initiative Safeguards Campaign. Idaho National Laboratory is operated for the U.S.
+Department of Energy by Battelle Energy Alliance under DOE contract DE-AC07-05-ID14517.
+
+
+% The Appendices part is started with the command \appendix;
+% appendix sections are then done as normal sections
+%\appendix
+
+
+\begin{thebibliography}{00}
+%\bibliographystyle{plain}
+
+% \bibitem{label}
+% Text of bibliographic item
+
+% notes:
+% \bibitem{label} \note
+
+% subbibitems:
+% \begin{subbibitems}{label}
+% \bibitem{label1}
+% \bibitem{label2}
+% If there is a note, it should come last:
+% \bibitem{label3} \note
+% \end{subbibitems}
+
+\bibitem{ensslin98}
+{N. Ensslin, Application Guide to Neutron Multiplicity Counting.
+Los Alamos Report LA-13422-M (1998).}
+
+\bibitem{ENMC}
+{J.E. Stewart, H.O. Menlove, D.R. Mayo, W.H. Geist, L.A. Carrillo, G.D. Herrera, Los Alamos
+Report LA-13743-M (2000).}
+
+\bibitem{Klein}
+{H. Klein, S. Neumann, Nucl. Instr. Meth. A 476, (2002) 132.}
+
+\bibitem{Xu}
+{Y.Xu, T.J.Downar, S.Avdic, V.Protopopescu, S.A.Pozzi, Techniques
+for neutron spectrum unfolding from pulse height distributions
+measured with liquid scintillators, in:Proceedings of the
+Institute of Nuclear Materials Management 47th Annual Meeting,
+Nashville, TN, July 16–20, 2006.}
+
+\bibitem{Reginatto}
+{M.Reginatto, P.Goldhagen, S.Neumann, Nucl. Instr. and Meth. A,
+476 (2002) 242.}
+
+\bibitem{LSMC}
+{K. Frame, W. Clay, T. Elmont, E. Esch, P. Karpius, D. MacArthur,
+E. McKigney, P. Santi, M. Smith, J. Thron, R. Williams, Nucl.
+Instr. Meth. A, 579 (2007) 192.}
+
+\bibitem{Sher}
+{R. Sher and S. Undermyer, "The detection of fissionable materials
+by nondestructive means," American Nuclear Society (1980). }
+
+\bibitem{NMIS}
+{J.T. Mihalczo, J.A. Mullens, J.K. Mattingly, T.E. Valentine,
+Nucl. Instr. Meth. A, 450 (2000) 531.}
+
+\bibitem{Flaska}
+{M. Flaska S.A. Pozzi, Nucl. Instr. Meth. A, 577 (2007) 654.}
+
+\bibitem{PazPal08}
+{I. P\'azsit and L. P\'al, ``Neutron Fluctuations - a Treatise on
+the Physics of Branching Processes'', Elsevier Science Ltd,
+London, New York, Tokyo, 2008.}
+
+\bibitem{AEP}
+{S. Avdic, A. Enqvist, I. P\'{a}zsit, ESARDA Bulletin Vol. 43
+(2009) 21.}
+
+\bibitem{EPA}
+{A. Enqvist, I. P\'{a}zsit, S. Avdic,
+doi:10.1016/j.nima.2010.01.022.}
+
+\bibitem{CC}
+{A. Enqvist, M. Flaska, S.A.Pozzi,  Nucl. Instr. and Meth. A 595
+(2008) 426.}
+
+\bibitem{Ispra}
+{S.A. Pozzi, S.D. Clarke, M. Flaska, P. Peerani, Nucl. Instr. and
+Meth. A, 608 (2009) 310.}
+
+\bibitem{Adams}
+{J.M Adams, G. White, Nucl. Instr. and Meth. 156 (1978) 459.}
+
+\bibitem{Sperr}
+{H. Sperr, H Spieler, M.R. Maier, D Evers, Nucl. Instr. and Meth.
+116 (1974) 55.}
+
+\bibitem{Valentine99}
+{T. E. Valentine, ``Evaluation of prompt fission gamma rays for
+use in simulating nuclear safeguard measurements,''
+ORNL/TM-1999/300.}
+
+\bibitem{Aniso}
+{A. M. Gagarski, I. S. Guseva, V. E. Sokolov, G. V. Val’ski et al.
+Bulletin of the Russian Academy of Sciences: Physics 72 No. 6
+(2008) 773.}
+
+%\bibitem{Carillo02}
+%{H. Vega-Carrillo, E. Manzanares-Acuna, A. Becerra-Ferreiro, A.
+%Carrillo-Nunez, Applied Radiation and Isotopes 57 (2002) 167.}
+
+
+\end{thebibliography}
+
+\end{document}

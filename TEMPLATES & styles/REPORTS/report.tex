@@ -1,0 +1,113 @@
+\documentclass{article}[11pt,a4paper]
+\usepackage[dvips]{graphicx}
+%\usepackage[swedish]{babel}
+\usepackage[latin1]{inputenc}    % Accept european-encoded (latin1) characters.
+\begin{document}
+%\selectlanguage{swedish}
+%\usepackage{here}
+
+%
+%Nu börjar dokumentet!
+%
+
+\begin{flushleft}
+\begin{tabular}{lr}
+   Andreas Enqvist \hspace{ 5.6 cm } & \today
+\end{tabular}
+\end{flushleft}
+
+
+\begin{center}
+\section*{\huge{Neutron activation}}
+\end{center}
+%
+\vspace{0.1 cm}
+\subsection*{Introduction}
+
+The objectives of this neutron activation laboration was to first assemble a working detector setup, using this setup we then wanted to investigate a sample that we exposed to neutron activation. By looking at  the resulting spectrum we want to determine  what decays it originate from and thus lead us to find what isotopes the sample is made of and what isotopes was created.
+
+\subsection*{The laboration}
+
+We started by assembling the detector that we would later use to find the energy spectrum from our neutron activated sample. The detector itself is a Sodium-Iodine (NaI) detector. The detector had a preamplifier built in and  was powered by a high voltage taken from a high-voltage module.
+
+The detector works by creating flashes of light in the detector material. These flashes are then converted to an electronic signal. the light flashes hits a photocathode that emits electrons, these electrons then gets multiplied in a photomultiplicator tube where the electrons hits dynodes that emits more electrons than it absorbes. Through a number of dynodes the signal (electron burst) will grow strong enough to be used. To further magnify the use of the signal it will be amplified in the built-in preamplifier.
+
+We now have a signal of about 200 mV in amplitude and about 100 $\mu$s in duration. This signal was sent into an amplifier that we connected to the setup. This gave us a more managable signal with an amplitude of about 1-10 V and a duration of about 2 ms.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{koppling.eps}
+\caption{Connection-scheme of the detector setup. Our initial signal from the preamplifier was a positive peak and not a negative dip as shown in the figure.}
+\label{fig:tråkig}
+\end{center}
+\end{figure}
+
+To get the energyspectrum from our detector we fed the amplified signal into an Analog to Digital Converter (ADC). The final analysis of the signal that analyses what energy channel the pulse belonged to was done with computer-equipment that continously plotted the energy spectrum. This also means that the longer measuring time you allow, the more accurate the spectrum will be since statistical fluctuations have the time to even out.
+
+To be able to decipher our energy spectrum we needed to calibrate our setup as a  next step. This was done with the well known isotopes $^{137}$Cs and $^{60}$Co. 86\% of the decays of $^{137}$Cs will produce 661,6 keV gamma rays. The $^{60}$Co will produce 2 peaks in the energy spectrum due to the fact that it decays into an excited state of $^{60}$Ni that almost instantly gets deexcited by sending out gamma rays in 2 steps, one with energy 1173,2 keV and one with energy 1332,5 keV.
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{combined2.eps}
+\caption{The dacays of $^{60}$Co and $^{137}$Cs.}
+\label{fig:tråkig}
+\end{center}
+\end{figure}
+
+
+%\begin{figure}[ht]
+%\begin{center}
+%\includegraphics[width=0.9\textwidth]{cobolt.eps}
+%\caption{The dacay of $^{60}$Co.}
+%\label{fig:tråkig}
+%\end{center}
+%\end{figure}
+
+By detecting these wellknown peaks we could calibrate our detector setup easily.
+
+The second part of the laboration was to try and detect what radioactive isotopes we could find in a sample of iron that we activated with neutrons. To activate the sample we used a neutron cannon that produce neautron by colliding deuterium and tritium.
+
+\begin{center}
+\begin{equation}
+^2H \,+ \, ^3H \, \longrightarrow \, ^4He \, + \, n \, + \, Q
+\end{equation}
+\end{center}
+
+\noindent The produced neutrons have an energy of 14 MeV. Iron is mostly compromised of $^{56}$Fe. To find what possible radionuclids we might create we need to look at the cross sections for $^{56}$Fe at relevant energies, see fig. (3).
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.85\textwidth]{fe056_f3.eps}
+\caption{Cross sections of different reactions with neutrons for $^{56}$Fe.}
+\label{fig:tråkig}
+\end{center}
+\end{figure}
+
+As we can see many reactions are possible. Lets look at what new isotopes might be created:
+
+\begin{center}
+\begin{equation}
+\begin{array}{lcl}
+(n,p) & \Rightarrow & ^{56}Fe \,+ \, n \, \longrightarrow \, ^{56}Mn \, + \, p \\
+(n,2n) & \Rightarrow & ^{56}Fe \,+ \, n \, \longrightarrow \, ^{55}Fe \, + \, 2n \\
+(n,\alpha) & \Rightarrow & ^{56}Fe \,+ \, n \, \longrightarrow \, ^{53}Cr \, + \, \alpha \\
+(n,np) & \Rightarrow & ^{56}Fe \,+ \, n \, \longrightarrow \, ^{55}Mn \, + \, n \, + \, p \\
+(n,n\alpha) & \Rightarrow & ^{56}Fe \,+ \, n \, \longrightarrow \, ^{52}Cr \, + \, \alpha \, + \, p
+\end{array}
+\end{equation}
+\end{center}
+
+When we took the neutron activated iron sample and used the NaI-detector we could detect a spectrum with a few peaks. Thanks to our calibration we could detect a major peak at about 850 keV, 1 smaller peak was also detected at around 1800 keV. Initially we could also see a small peak around 500 keV.
+
+Since the isotopes $^{56}$Mn, $^{53}$Cr and $^{52}$Cr are stable the peaks should come from either $^{56}$Mn or $^{55}$Fe. Looking at their decays and energies emitted we noticed that $^{56}$Mn, with a halflife of 2,6h, had peaks at 847, 1810 and 2113 keV which correspond very nicely with the peaks in the energy diagram.
+
+The small peak at around 500 keV can most likely be explained by positrons. Annihilation of a positron emits two 511 keV photons in opposite direction, since 511 keV is the rest mass of an electron/positron.
+
+Since the NaI-detector has a pretty poor energy resolution we also measured the sample with a high definition Germanium (Ge) detector. That detector showed a very defined peak at 847 keV and also detected the small peaks at 1810 and 2113 keV.
+
+\subsection*{Conclusions}
+
+Using the sodium-Iodine detector we were able to detect the deday of the isotope $^{56}$Mn (Main peak at 847 keV) with a halflife of 2,6h. This also showed us that the iron was compromised mainly of $^{56}$Fe that during the neutron activation was transmuted into $^{56}$Mn in a (n,p)-reaction.
+
+
+\end{document}

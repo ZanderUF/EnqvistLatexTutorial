@@ -1,0 +1,411 @@
+%%% Copyright   Ulf A. Lindgren
+%%%             Department of Applied Electronics
+%%%             Chalmers University of Technology
+%%%             S-412 96 Gothenburg, Sweden
+%%%             E-mail lindgren@ae.chalmers.se
+%%%
+%%% Note        Premission is granted to modify this file under
+%%%             the condition that it is saved using another
+%%%             file and package name.
+%%%
+%%% Revision    1.1
+%%%
+%%%             Jan. 8th Modified package name base date option
+%%%             Jan. 22th Modified FmN and FmTi for error in book.cls
+%%%                  \MakeUppercase{#}->{\MakeUppercase#}
+%%%             Apr. 6th Modified Lenny option to prevent undesired 
+%%%                  skip of line.
+%%%
+%%% Last modified    April 6th 1997
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{fncychapKE}
+             [1997/04/06 v1.11
+                 LaTeX package (Revised chapters)]
+\RequirePackage{color}
+%%%% DEFINITION OF Chapapp variables
+\newcommand{\CNV}{\huge\bfseries}
+\newcommand{\ChNameVar}[1]{\renewcommand{\CNV}{#1}}
+
+
+%%%% DEFINITION OF TheChapter variables
+\newcommand{\CNoV}{\huge\bfseries}
+\newcommand{\ChNumVar}[1]{\renewcommand{\CNoV}{#1}}
+
+\newif\ifUCN
+\UCNfalse
+\newif\ifLCN
+\LCNfalse
+\def\ChNameLowerCase{\LCNtrue\UCNfalse}
+\def\ChNameUpperCase{\UCNtrue\LCNfalse}
+\def\ChNameAsIs{\UCNfalse\LCNfalse}
+\newcommand{\FmN}[1]{%
+\ifUCN
+   {\MakeUppercase #1}\LCNfalse
+\else
+   \ifLCN
+      {\MakeLowercase{#1}}\UCNfalse
+   \else #1
+   \fi
+\fi}
+
+
+%%%% DEFINITION OF Title variables
+\newcommand{\CTV}{\Huge\bfseries}
+\newcommand{\ChTitleVar}[1]{\renewcommand{\CTV}{#1}}
+
+%%%% DEFINITION OF the basic rule width
+\newlength{\RW}
+\setlength{\RW}{1pt}
+\newcommand{\ChRuleWidth}[1]{\setlength{\RW}{#1}}
+
+\newif\ifUCT
+\UCTfalse
+\newif\ifLCT
+\LCTfalse
+\def\ChTitleLowerCase{\LCTtrue\UCTfalse}
+\def\ChTitleUpperCase{\UCTtrue\LCTfalse}
+\def\ChTitleAsIs{\UCTfalse\LCTfalse}
+\newcommand{\FmTi}[1]{%
+\ifUCT
+   {\MakeUppercase#1}\LCTfalse
+\else
+   \ifLCT
+      {\MakeLowercase#1}\UCTfalse
+   \else #1
+   \fi
+\fi}
+
+\newlength{\mylen}
+\newlength{\myhi}
+\newlength{\px}
+\newlength{\py}
+\newlength{\pyy}
+\newlength{\pxx}
+
+\def\mghrulefill#1{\leavevmode\leaders\hrule\@height #1\hfill\kern\z@}
+
+\newcommand{\DOCH}{%
+  \CNV\FmN{\@chapapp}\space \CNoV\thechapter
+  \par\nobreak
+  \vskip 20\p@
+  }
+\newcommand{\DOTI}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@
+    }
+\newcommand{\DOTIS}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@
+    }
+
+%%%%%% SONNY DEF
+
+\DeclareOption{Sonny}{%
+  \ChNameVar{\Large\sf}
+  \ChNumVar{\Huge}
+  \ChTitleVar{\huge\sf\bfseries}
+  \ChRuleWidth{0.5pt}
+  \ChNameUpperCase
+  \renewcommand{\DOCH}{%
+    \raggedleft\mghrulefill{\RW}\par\nobreak
+    \CNV\FmN{\@chapapp}\space \CNoV\thechapter\par\nobreak
+    \vskip -12pt\mghrulefill{\RW}\par\nobreak
+    \par\nobreak
+    \vskip 40\p@}
+  \renewcommand{\DOTI}[1]{%
+%    \CTV\raggedleft\mghrulefill{\RW}\par\nobreak
+%    \vskip 5\p@
+    \CTV\FmTi{#1}\par\nobreak
+%    \mghrulefill{\RW}\par\nobreak
+    \vskip 40\p@}
+
+  \renewcommand{\DOTIS}[1]{%
+    \raggedleft\CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@}
+%     \CTV\raggedleft\mghrulefill{\RW}\par\nobreak
+%     \vskip 5\p@
+%     \CTV\FmTi{#1}\par\nobreak
+%     \mghrulefill{\RW}\par\nobreak
+%     \vskip 40\p@}
+}
+
+%%%%%% LENNY DEF
+
+\DeclareOption{Lenny}{%
+
+  \ChNameVar{\fontsize{14}{16}\usefont{OT1}{phv}{m}{n}\selectfont}
+  \ChNumVar{\fontsize{60}{62}\usefont{OT1}{ptm}{m}{n}\selectfont}
+  \ChTitleVar{\Huge\bfseries\rm}
+  \ChRuleWidth{1pt}
+  \renewcommand{\DOCH}{%
+    \settowidth{\px}{\CNV\FmN{\@chapapp}}
+    \addtolength{\px}{2pt}
+    \settoheight{\py}{\CNV\FmN{\@chapapp}}
+    \addtolength{\py}{1pt}
+
+    \settowidth{\mylen}{\CNV\FmN{\@chapapp}\space\CNoV\thechapter}
+    \addtolength{\mylen}{1pt}
+    \settowidth{\pxx}{\CNoV\thechapter}
+    \addtolength{\pxx}{-1pt}
+
+    \settoheight{\pyy}{\CNoV\thechapter}
+    \addtolength{\pyy}{-2pt}
+    \setlength{\myhi}{\pyy}
+    \addtolength{\myhi}{-1\py}
+    \par
+    \parbox[b]{\textwidth}{%
+    \rule[\py]{\RW}{\myhi}%
+    \hskip -\RW%
+    \rule[\pyy]{\px}{\RW}%
+    \hskip -\px%
+    \raggedright%
+    \CNV\FmN{\@chapapp}\space\CNoV\thechapter%
+    \hskip1pt%
+    \mghrulefill{\RW}%
+    \rule{\RW}{\pyy}\par\nobreak%
+    \vskip -\baselineskip%
+    \vskip -\pyy%
+    \hskip \mylen%
+    \mghrulefill{\RW}\par\nobreak%
+    \vskip \pyy}%
+    \vskip 20\p@}
+
+  \renewcommand{\DOTI}[1]{%
+    \raggedright
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@}
+
+  \renewcommand{\DOTIS}[1]{%
+    \raggedright
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@}
+ }
+
+
+%%%%%%% GLENN DEF
+
+
+\DeclareOption{Glenn}{%
+  \ChNameVar{\bfseries\Large\sf}
+  \ChNumVar{\Huge}
+  \ChTitleVar{\bfseries\Large\rm}
+  \ChRuleWidth{1pt}
+  \ChNameUpperCase
+  \ChTitleUpperCase
+  \renewcommand{\DOCH}{%
+    \settoheight{\myhi}{\CTV\FmTi{Test}}
+    \setlength{\py}{\baselineskip}
+    \addtolength{\py}{\RW}
+    \addtolength{\py}{\myhi}
+    \setlength{\pyy}{\py}
+    \addtolength{\pyy}{-1\RW}
+     
+    % KE: Upper left text ('CHAPTER 3') and horizontal rule:
+    \raggedright
+    \CNV\FmN{\@chapapp}\space\CNoV\thechapter
+    \hskip 3pt\mghrulefill{\RW}\rule[-1\pyy]{2\RW}{\py}\par\nobreak}
+
+  \renewcommand{\DOTI}[1]{%
+    \addtolength{\pyy}{-4pt}
+    \settoheight{\myhi}{\CTV\FmTi{#1}}
+    \addtolength{\myhi}{\py}
+    \addtolength{\myhi}{-1\RW}
+    % KE: Lower rule and right chapter name:
+    \vskip -1\pyy   % Vertical shift of lower left compared to upper right
+    \rule{2\RW}{\myhi}\mghrulefill{\RW}\hskip 2pt
+    \raggedleft\CTV\FmTi{#1}\par\nobreak
+% KE: change distance to subsequent text:
+%    \vskip 80\p@}
+    \vskip 20\p@}
+
+% Chapters without chapter numbers (eg. preface):
+
+  \renewcommand{\DOTIS}[1]{%
+    \setlength{\py}{13pt} % Was: 10
+    \setlength{\pyy}{\py}
+    \addtolength{\pyy}{\RW}
+    \setlength{\myhi}{\baselineskip}
+    \addtolength{\myhi}{\pyy}
+    \mghrulefill{\RW}\rule[-1\py]{2\RW}{\pyy}\par\nobreak
+%    \addtolength{}{}
+    \vskip -1\baselineskip
+    \rule{2\RW}{\myhi}\mghrulefill{\RW}\hskip 2pt
+    \raggedleft\CTV\FmTi{#1}\par\nobreak
+% Distance to following text:
+    \vskip -20\p@} % Was: 60(?)
+  }
+
+%%%%%%% CONNY DEF
+
+\DeclareOption{Conny}{%
+  \ChNameUpperCase
+  \ChTitleUpperCase  
+  \ChNameVar{\Huge\sf\bfseries}
+  \ChNumVar{\fontsize{60}{62}\usefont{OT1}{phv}{b}{n}\selectfont}
+  \ChTitleVar{\Huge\sf\bfseries}
+  \ChRuleWidth{2pt}
+
+  \renewcommand{\DOCH}{%
+%    \mghrulefill{3\RW}\par\nobreak
+%    \vskip -0.5\baselineskip
+%    \mghrulefill{\RW}\par\nobreak
+%    \CNV\FmN{\@chapapp}\space \CNoV\thechapter
+%    \par\nobreak
+%    \vskip -0.5\baselineskip
+%    \CNV\FmN{\MakeLowercase{\@chapapp}}$\!\!$ 
+%    \raisebox{-0.2cm}{\CNoV\thechapter}$\!\!$
+    \raisebox{-0.9cm}{\CNoV\thechapter}
+   }
+  \renewcommand{\DOTI}[1]{%
+%    \mghrulefill{\RW}\par\nobreak
+%    {\color[rgb]{0.5,0.5,0.5}\CTV\MakeLowercase{#1}}\par\nobreak
+    {\parbox[t]{12cm}{\CTV #1}}\par\nobreak
+    \vskip 60\p@
+    }
+  \renewcommand{\DOTIS}[1]{%
+%    \mghrulefill{\RW}\par\nobreak
+    {\CTV #1\par\nobreak}
+    \vskip 60\p@
+    }
+  }
+
+%%%%%%% REJNE DEF
+
+\DeclareOption{Rejne}{%
+
+  \ChNameUpperCase
+  \ChTitleUpperCase  
+  \ChNameVar{\centering\Large\rm}
+  \ChNumVar{\Huge}
+  \ChTitleVar{\centering\Huge\rm}
+  \ChRuleWidth{1pt}         %linethickness!!!
+  \renewcommand{\DOCH}{%
+    \vskip -27\p@              %new line  reduce the overhead space to chapterstart!!!
+    \settoheight{\py}{\CNoV\thechapter}
+    \addtolength{\py}{-1pt}
+    \CNV\FmN{\@chapapp}\par\nobreak
+    \vskip 10\p@           %was 20    
+    \setlength{\myhi}{2\baselineskip}  %length top vert lineS
+    \setlength{\px}{\myhi}
+    \addtolength{\px}{-1\RW}     %moves top vert lineS up/down, gap kept... SMALL move!
+    \rule[-1\px]{\RW}{\myhi}\mghrulefill{\RW}\hskip    %last is rule thickness  
+    10pt\raisebox{-0.5\py}{\CNoV\thechapter}\hskip 10pt\mghrulefill{\RW}\rule[-1\px]{\RW}{\myhi}\par\nobreak  %1st adds chapnum.
+     \vskip -7\p@  % was \vskip -1pt\p@
+    }
+  \renewcommand{\DOTI}[1]{%
+    \setlength{\mylen}{\textwidth}
+    \addtolength{\mylen}{-2\RW}   %where small visrt lines are in X-axis
+    {\vrule width\RW}\parbox{\mylen}{\CTV\FmTi{#1}}{\vrule width\RW}\par\nobreak
+    \vskip -7pt\rule{\RW}{2\baselineskip}\mghrulefill{\RW}\rule{\RW}{2\baselineskip}  %was: \vskip -1pt\ru...
+    \vskip 40\p@     %was 60 reduce space from chap-head to start of text
+    }
+  \renewcommand{\DOTIS}[1]{%
+    \setlength{\py}{\fboxrule}
+    \setlength{\fboxrule}{\RW}
+    \setlength{\mylen}{\textwidth}
+    \addtolength{\mylen}{-2\RW}
+    \fbox{\parbox{\mylen}{\vskip 2\baselineskip\CTV\FmTi{#1}\par\nobreak\vskip \baselineskip}} 
+    \setlength{\fboxrule}{\py}
+    \vskip 40\p@     %was 60 reduce space from chap-head to start of text
+    }
+  }
+
+
+%%%%%%% BJARNE DEF
+
+\DeclareOption{Bjarne}{%
+  \ChNameUpperCase
+  \ChTitleUpperCase  
+  \ChNameVar{\raggedleft\normalsize\rm}
+  \ChNumVar{\raggedleft \bfseries\Large}
+  \ChTitleVar{\raggedleft \Large\rm}
+  \ChRuleWidth{1pt}
+
+  \newcounter{AlphaCnt}
+  \newcounter{AlphaDecCnt}
+  \newcommand{\AlphaNo}{%
+    \ifcase\number\theAlphaCnt
+      \ifnum\number\thechapter=0
+        ZERO\else{}\fi
+    \or ONE\or TWO\or THREE\or FOUR\or FIVE
+    \or SIX\or SEVEN\or EIGHT\or NINE\or TEN
+    \or ELEVEN\or TWELV\or THIRTEEN\or FOURTEEN\or FIFTEEN
+    \or SIXTEEN\or SEVENTEEN\or EIGHTEEN\or NINETEEN\fi
+}
+
+  \newcommand{\AlphaDecNo}{%
+    \setcounter{AlphaDecCnt}{0}
+    \@whilenum\number\theAlphaCnt>0\do
+      {\addtocounter{AlphaCnt}{-10}
+       \addtocounter{AlphaDecCnt}{1}}
+     \ifnum\number\theAlphaCnt=0
+     \else
+       \addtocounter{AlphaDecCnt}{-1}
+       \addtocounter{AlphaCnt}{10}
+     \fi
+     
+     
+    \ifcase\number\theAlphaDecCnt\or TEN\or TWENTY\or THIRTY\or
+    FORTY\or FIFTY\or SIXTY\or SEVENTY\or EIGHTY\or NINETY\fi
+    }
+  \newcommand{\TheAlphaChapter}{%
+    \setcounter{AlphaCnt}{\number\thechapter}
+    \ifnum\number\thechapter<20
+      \AlphaNo
+    \else
+      \AlphaDecNo\AlphaNo
+    \fi
+    }  
+  \renewcommand{\DOCH}{%
+    \mghrulefill{\RW}\par\nobreak
+    \CNV\FmN{\@chapapp}\par\nobreak 
+    \CNoV\TheAlphaChapter\par\nobreak
+    \vskip -1\baselineskip\vskip 5pt\mghrulefill{\RW}\par\nobreak
+    \vskip 20\p@
+    }
+  \renewcommand{\DOTI}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@
+    }
+  \renewcommand{\DOTIS}[1]{%
+    \CTV\FmTi{#1}\par\nobreak
+    \vskip 40\p@
+    }
+}
+
+%%%%%%%%% GENERAL STUFF %%%%%%%%%
+
+\DeclareOption*{%
+  \PackageWarning{fancychapter}{unknown style option}
+  }
+
+\ProcessOptions* \relax
+
+\def\@makechapterhead#1{%
+% KE: Move entire chapter head up or down:
+%  \vspace*{50\p@}%
+  \vspace*{30\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+      \DOCH
+    \fi
+    \interlinepenalty\@M
+    \DOTI{#1}
+  }}
+\def\@schapter#1{\if@twocolumn
+                   \@topnewpage[\@makeschapterhead{#1}]%
+                 \else
+                   \@makeschapterhead{#1}%
+                   \@afterheading
+                 \fi}
+\def\@makeschapterhead#1{%
+  \vspace*{50\p@}%
+  {\parindent \z@ \raggedright
+    \normalfont
+    \interlinepenalty\@M
+    \DOTIS{#1}
+    \vskip 40\p@
+  }}
+
+\endinput

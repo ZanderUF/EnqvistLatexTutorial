@@ -1,0 +1,323 @@
+%%
+%% This is file `powerdot-example1.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% powerdot.dtx  (with options: `pdexample1')
+%%
+%% ---------------------------------------------------------------
+%% Copyright (C) 2005-2006 Hendri Adriaens and Christopher Ellison
+%% ---------------------------------------------------------------
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% This Current Maintainer of this work is Hendri Adriaens.
+%%
+%% This work consists of all files listed in manifest.txt.
+%%
+\documentclass[clock,style=fyma,paper=screen,blackslide,trans=Wipe,mode=present]{powerdot}
+\usepackage{amsmath}
+\usepackage{movie15}
+
+%\usepackage{pst-node}
+%\usepackage{listings}
+%\usepackage{babel}
+%\usepackage[latin1]{inputenc}    % Accept european-encoded (latin1) characters.
+
+\title{Noise Diagnostics of Stationary and Non-Stationary Reactor Processes}
+\author{Carl Sunde}
+\date{Chalmers University of Technology}
+\pdsetup{lf= April 27 2007}
+
+\begin{document}
+
+\maketitle[{logohook=t, logopos={0.5\slidewidth,
+0.47\slideheight},
+logocmd={\includegraphics[width=5cm]{figures/framsida2.ps}}}]
+%\begin{slide}[toc=,bm=]{Overview}
+%\tableofcontents[content=sections]
+%\end{slide}
+%\section{Number Distributions}
+\section[slide=false]{Erata}
+\begin{slide}{Erata}
+Figure 2.2 page 6: \quad \textit{dotted} should read \textit{dashed }\\[5mm]
+In section 7.2 pages 50-51: \quad
+$e^{\frac{|\textbf{r}-\textbf{r}'|}{l}}$ should read
+$e^{\frac{|\textbf{r}'-\textbf{r}''|}{l}}$
+\end{slide}
+
+\section[slide=false]{Papers}
+
+\begin{slide}{Part 1, wavelets analysis}
+This thesis is an introduction to and a summary of the work
+published in the following papers:
+\begin{itemize}
+\item
+\textsc{Paper I}\\ C.~Sunde, S.~Avdi\'{c} and I.~P\'{a}zsit, "Classification of two-phase flow regimes via image analysis and a neuro-wavelet approach"\\
+\emph{Progress in Nuclear Energy}, {\bf 46}, 348 (2005).
+\item
+\textsc{Paper II}\\C.~Sunde and I.~P\'{a}zsit, "Investigation of detector tube impacting in the Ringhals-1 BWR"\\
+\emph{International Journal of Nuclear Energy Science and
+Technology}, {\bf 2}, 189 (2006).
+\item
+\textsc{Paper III}\\ C.~Sunde and I.~P\'{a}zsit, "Wavelet techniques for the determination of the decay ratio in boiling water reactors"\\
+\emph{Kerntechnik}, \textbf{72}, 7 (2007).
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Part 2, core barrel vibrations}
+\begin{itemize}
+\item
+\textsc{Paper IV}\\C.~Sunde, C.~Demazi\`{e}re and I.~P\'{a}zsit , "Calculations of the neutron noise induced by shell-mode core-barrel vibrations in a 1-D, two-group, two-region slab reactor model"\\
+\emph{Nuclear Technology}, {\bf 154}, 129 (2006).
+
+\item
+\textsc{Paper V}\\C.~Sunde, C.~Demazi\`{e}re and I.~P\'{a}zsit , "Investigation of the neutron noise induced by shell-mode core-barrel vibrations in a reflected reactor"\\
+\emph{Proc. Int. Top. Mtg. on Mathematics and Computing,
+Supercomputing, Reactor Physics and Nuclear and Biological
+Applications (M\&C2005)}, September 12-15, 2005. \item
+\textsc{Paper VI}\\M.~P\'{a}zsit, C.~Sunde and I.~P\'{a}zsit,
+"Beam mode core-barrel vibrations in the PWRs Ringhals 2-4",
+\emph{Proc. Int. Top. Mtg. on Advances in Nuclear Analysis and
+Simulations (PHYSOR2006)}, September 10-14,
+2006.
+\end{itemize}
+\end{slide}
+
+\begin{slide}{Part 3, break-frequency method}
+\begin{itemize}
+\item \textsc{Paper VII}\\
+C.~Sunde, C.~Demazi\`{e}re and I.~P\'{a}zsit, "Investigation of
+the validity of the point-kinetics approximation and of the
+break-frequency method in 2-D subcritical systems", \emph{Proc.
+Joint Int. Top. Mtg. on Mathematics and Computing and
+Supercomputing in Nuclear Applications (M\&C + SNA 2007)},
+Monterey, California, April 15-19, 2007, American Nuclear Society
+(2007)
+\end{itemize}
+\end{slide}
+
+\section[slide=false]{Noise diagnostics}
+
+\begin{slide}{Noise diagnostics}
+\begin{itemize}
+\item Noise is the time-dependent fluctuation from the mean
+value of the neutron flux.\\[5mm]
+
+\item Power reactor noise can be induced by technological
+processes, vibrations of core components, or
+temperature or density variations.\\[5mm]
+
+\item Fluctuations of the cross-sections leads to fluctuations of
+the neutron flux, noise.\\[5mm]
+
+\item The noise can be used to identify deteriorating or
+malfunctioning components, parameter estimation (e.g. reactivity,
+moderator temperature coefficient and decay ratio)\\[5mm]
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Stationary and Non-Stationary}
+\begin{itemize}
+\item Stationary processes are uniform in time (frequencies do not
+change)
+\\ Beam-mode core barrel vibration or detector tube vibrations\\
+[3mm]
+
+\item Non-Stationary processes are intermittent or transient
+\\ Fuel assembly vibrations due to detector impacting
+\end{itemize}
+\vspace{-5mm}
+\begin{figure}[ht]
+\includemovie[
+  poster]{4.8cm}{5cm}{figures/sond2.avi}
+\end{figure}
+\end{slide}
+
+\section[slide=false]{Detector tube vibrations}
+\begin{slide}{Detector tube vibrations}
+\begin{itemize}
+\item Stationary and Non-stationary processes
+
+\item Spectral and Wavelet analysis
+\end{itemize}
+\begin{figure}[H]
+\centering
+\includegraphics[width=7 cm]{figure_Lic/fuelbox2.eps}
+\end{figure}
+
+\end{slide}
+
+\begin{slide}{Signals}
+\begin{figure}[H]
+\centering
+\includegraphics[width=10 cm]{figure_Lic/vibration2.eps}
+\end{figure}
+\end{slide}
+
+\begin{slide}{Spectral analysis}
+\begin{itemize}
+\item Broad vibration peak at the eigenfrequency
+
+\item multiple peaks at double and triple frequencies
+
+\item zero phase around the eigenfrequency
+
+\item high coherence around the eigenfrequency
+\end{itemize}
+\begin{figure}[H]
+\begin{tabular}{l l}
+\hspace{-5mm}
+\includegraphics[width=5 cm]{figure_Lic/cutNEWLPRM16.eps} &
+\includegraphics[width=5 cm]{figures/LPRM2.eps} \\
+\end{tabular}
+\end{figure}
+\end{slide}
+
+\begin{slide}{Discrete wavelet analysis}
+\begin{figure}[H]
+\centering
+\includegraphics[width=8 cm]{figures/discrete16.eps}
+\end{figure}
+\begin{equation}
+x(t)=x_{M}(t)+ \sum_{n=1}^{n=M} d_n(t)
+\end{equation}
+\end{slide}
+
+\begin{slide}{Continuous wavelet analysis}
+\begin{figure}[H]
+\centering
+\includegraphics[width=8 cm]{figures/wavecoh.ps}
+\end{figure}
+\end{slide}
+
+\begin{slide}{Results}
+\begin{itemize}
+\item Four measurements at BOC 2002-2005 from the BWR Ringhals-1
+have been analysed
+
+\item All with spectral and three with wavelet methods due to low
+sampling frequency in the first measurement
+
+\item four detector tubes are suspected for impacting in all or
+all but one of the measurements
+
+\item visual inspection in 2007 and analysis of measurement from
+2006
+\end{itemize}
+\vspace{-5mm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=5 cm]{figures/detectormap.eps}
+\end{figure}
+\end{slide}
+
+\section[slide=false]{Core-barrel vibrations}
+\begin{slide}{Core-barrel vibrations}
+Shell mode vibration, in-core noise used to classify the
+vibration?
+
+\begin{figure}[ht]
+\includemovie[
+  poster]{10cm}{5cm}{figures/corebarrel.avi}
+\end{figure}
+\end{slide}
+
+\begin{slide}{Model of the vibrations}
+\begin{itemize}
+\item 1-D analytical calculation of the induced in-core noise
+(2-group diffusion model)
+
+\item 1-D numerical calculation of the induce in-core noise
+(2-group diffusion model)
+
+\item comparison with measurement
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=9.5 cm]{figures/system.eps}\\
+\end{figure}
+\end{itemize}
+
+\end{slide}
+
+\begin{slide}{Analytical and numerical results}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10 cm]{figures/AnaNum.eps}\\
+\end{figure}
+\end{slide}
+
+\begin{slide}{Comparison with measurements}
+\begin{figure}[htb]
+\centering
+\includegraphics[width=10 cm]{figures/AnaMeascolor.eps}\\
+\end{figure}
+\end{slide}
+
+\section[slide=false]{General conclusions}
+\begin{slide}{Conclusions}
+\begin{itemize}
+\item Important to have access to real measurements and data from
+nuclear power plants\\[5mm]
+
+\item In four of the five research areas the algorithms have been
+tested on real measurements and data with success.\\[5mm]
+
+\item Wavelets can be of use in some applications but they are not
+a magic tool which solves all problems in signal processing.
+\\[5mm]
+
+\item Some of the methods and algorithms elaborated in this thesis are in routinely use for diagnosing operating power reactors\\[5mm]
+
+\end{itemize}
+\end{slide}
+
+
+%\begin{slide}{Slide 2}
+%  \begin{itemize}
+%    \item<1-> Here
+%    \begin{itemize}
+%      \item<2-> we
+%      \begin{itemize}
+%        \item<3-> demonstrate
+%        \begin{itemize}
+%          \item<4-> the itemize environment
+%        \end{itemize}
+%      \end{itemize}
+%    \end{itemize}
+%  \end{itemize}
+%\end{slide}
+
+%\begin{slide}{Slide 3}
+%  \begin{enumerate}[type=1]
+%    \item<1> Here
+%    \begin{enumerate}
+%      \item<2> we
+%      \begin{enumerate}
+%        \item<3> demonstrate
+%        \begin{enumerate}
+%          \item<4> the enumerate environment
+%        \end{enumerate}
+%      \end{enumerate}
+%    \end{enumerate}
+%  \end{enumerate}
+%\end{slide}
+
+
+
+
+\end{document}
+\endinput
+%%
+%% End of file `powerdot-example1.tex'.

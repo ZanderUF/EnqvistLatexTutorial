@@ -1,0 +1,158 @@
+This is e-TeX, Version 3.141592-2.2 (MiKTeX 2.4) (preloaded format=latex 2004.12.13)  5 APR 2006 13:37
+entering extended mode
+**sampfoil.tex
+(sampfoil.tex
+LaTeX2e <2003/12/01>
+Babel <v3.8a> and hyphenation patterns for english, french, german, ngerman, du
+mylang, nohyphenation, loaded.
+File: sampfoil.tex 2002/10/29 v2.1.4a Sample FoilTeX file, Copyright IBM 1995,1
+997,1998,2002
+(d:\Program Files\MikTeX\texmf\tex\latex\foiltex\foils.cls
+Document Class: foils 2002/10/29 v2.1.4a FoilTeX Class File, Copyright IBM 1995
+,1997,1998,2002
+(d:\Program Files\MikTeX\texmf\tex\latex\foiltex\fltfonts.def
+File: fltfonts.def 2002/10/29 v2.1.4a FoilTeX font definition file, Copyright I
+BM 1995,1997,1998,2002
+\symflasy=\mathgroup4
+LaTeX Info: Redefining \em on input line 243.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/fcmr/m/n on input line 245.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/fcmm/m/it on input line 246.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/fcmsy/m/n on input line 247.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/fcmex/m/n on input line 248.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/fcmr/bx/n on input line 249.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/fcmm/b/it on input line 250.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/fcmsy/b/n on input line 251.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/fcmex/m/n on input line 252.
+LaTeX Font Info:    Redeclaring math alphabet \mathrm on input line 253.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 254.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/fcmr/bx/n on input line 254.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/fcmr/bx/n on input line 254.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 255.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/fcmss/m/n on input line 255.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/fcmss/m/n on input line 255.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 256.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/fcmr/m/it on input line 256.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/fcmr/m/it on input line 256.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 257.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/fcmtt/m/n on input line 257.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/fcmtt/m/n on input line 257.
+)
+(d:\Program Files\MikTeX\texmf\tex\latex\foiltex\foil20.clo
+File: foil20.clo 2002/10/29 v2.1.4a FoilTeX file (size option), Copyright IBM 1
+995,1997,1998,2002
+)
+\head@footskip=\dimen102
+\@foilheight=\dimen103
+\@foilwidth=\dimen104
+\abovetitleskip=\skip41
+\titleauthorskip=\skip42
+\authorauthorskip=\skip43
+\authordateskip=\skip44
+\dateabstractskip=\skip45
+\@tempfootbox=\box26
+\@tempfootht=\dimen105
+\bibindent=\dimen106
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\@captionwidth=\skip48
+\captionwidth=\skip49
+\abovefloatskip=\skip50
+\c@table=\count79
+\c@figure=\count80
+\foilheadskip=\skip51
+\c@Theorem=\count81
+\c@Lemma=\count82
+\c@Corollary=\count83
+\c@Proposition=\count84
+\c@Definition=\count85
+)
+(d:\Program Files\MikTeX\texmf\tex\latex\base\latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup5
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+) (sampfoil.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 108.
+LaTeX Font Info:    ... okay on input line 108.
+
+[0
+
+] [1] [2]
+LaTeX Font Info:    Font shape `OMS/fcmtt/m/n' in size <20.74> not available
+(Font)              Font shape `OMS/fcmsy/m/n' tried instead on input line 181.
+
+ [3]
+LaTeX Font Info:    Font shape `OT1/fcmss/m/it' in size <20.74> not available
+(Font)              Font shape `OT1/fcmr/m/it' tried instead on input line 196.
+
+LaTeX Font Info:    Font shape `OT1/fcmss/m/sc' in size <20.74> not available
+(Font)              Font shape `OT1/fcmr/m/sc' tried instead on input line 197.
+
+
+Overfull \hbox (102.82748pt too wide) in paragraph at lines 202--209
+[][]\OT1/fcmss/m/n/20.74 size changing from \OT1/fcmss/m/n/12 tiny\OT1/fcmss/m/
+n/20.74 , \OT1/fcmss/m/n/12 scriptsize\OT1/fcmss/m/n/20.74 , \OT1/fcmss/m/n/14.
+4 footnotesize\OT1/fcmss/m/n/20.74 , \OT1/fcmss/m/n/17.28 small\OT1/fcmss/m/n/2
+0.74 , normalsize,\OT1/fcmss/m/n/24.88 large\OT1/fcmss/m/n/20.74 ,\OT1/fcmss/m/
+n/29.86 Large\OT1/fcmss/m/n/20.74 ,\OT1/fcmss/m/n/35.83 LARGE\OT1/fcmss/m/n/20.
+74 ,
+ []
+
+[4] [5]
+LaTeX Font Info:    Font shape `OML/fcmss/m/n' in size <20.74> not available
+(Font)              Font shape `OML/fcmm/m/it' tried instead on input line 220.
+
+LaTeX Font Info:    Font shape `OMS/fcmss/m/n' in size <20.74> not available
+(Font)              Font shape `OMS/fcmsy/m/n' tried instead on input line 224.
+
+LaTeX Font Info:    Font shape `OT1/fcmss/m/ui' in size <20.74> not available
+(Font)              Font shape `OT1/fcmr/m/ui' tried instead on input line 224.
+
+ [6] [7] [8] [9]
+LaTeX Font Info:    Font shape `OT1/fcmtt/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/fcmtt/m/n' tried instead on input line 292.
+
+ [10] [11] [12] [13] [14] [15] [16]
+
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 397.
+
+
+LaTeX Warning: \oval, \circle, or \line size unavailable on input line 400.
+
+[17] [18] [19] [20] [21] (sampfoil.aux) ) 
+Here is how much of TeX's memory you used:
+ 613 strings out of 95898
+ 8933 string characters out of 1194699
+ 49506 words of memory out of 1051747
+ 3692 multiletter control sequences out of 60000
+ 17012 words of font info for 63 fonts, out of 500000 for 1000
+ 14 hyphenation exceptions out of 607
+ 24i,15n,23p,230b,255s stack positions out of 1500i,500n,5000p,200000b,32768s
+
+Output written on sampfoil.dvi (22 pages, 18972 bytes).

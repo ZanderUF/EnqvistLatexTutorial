@@ -1,0 +1,555 @@
+%%
+%% This is file `powerdot-example1.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% powerdot.dtx  (with options: `pdexample1')
+%%
+%% ---------------------------------------------------------------
+%% Copyright (C) 2005-2006 Hendri Adriaens and Christopher Ellison
+%% ---------------------------------------------------------------
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status "maintained".
+%%
+%% This Current Maintainer of this work is Hendri Adriaens.
+%%
+%% This work consists of all files listed in manifest.txt.
+%%
+\documentclass[clock,style=horatio,paper=screen,blackslide,trans=Wipe,mode=present]{powerdot}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{movie15}
+%\usepackage{pst-node}
+%\usepackage{listings}
+%\usepackage{babel}
+%\usepackage[latin1]{inputenc}    % Accept european-encoded (latin1) characters.
+\vspace{-2cm}
+\title{\vspace{-1cm}Safeguards: Modelling~of~the~Detection and Characterization of Nuclear Materials  \vspace{-0.3cm}}
+\author{  Andreas Enqvist \\ Chalmers University of Technology}
+\date{}
+\pdsetup{lf={February 26, 2010}}
+
+\begin{document}
+
+\maketitle[{logohook=t, logopos={0.5\slidewidth,
+0.55\slideheight},
+logocmd={\includegraphics[width=6cm]{figures/frontpage.eps}}}]
+%\begin{slide}[toc=,bm=]{Overview}
+%\tableofcontents[content=sections]
+
+\section[slide=false]{Corrigenda}
+\begin{slide}{Corrigenda}
+Status of \textsc{Paper IV} should now read \emph{Nuclear
+Instruments \& Methods $\boldsymbol{A}$}, \textbf{615}, 62--69
+(2010). \\[4mm]
+
+Status of \textsc{Paper VII} should now read \emph{accepted for
+publication in Nuclear Instruments \& Methods $\boldsymbol{A}$},
+(2010). \\ DOI:   10.1016/j.nima.2010.02.119
+\end{slide}
+
+\section[slide=false]{Papers}
+
+\begin{slide}{Part 1, Particle Number Distribution}
+This thesis is an introduction to and a summary of the work
+published in the following papers:
+\begin{itemize}
+\item \textsc{Paper I}\\[1mm] A.~Enqvist, I.~P\'{a}zsit and S.A.~Pozzi, ``The Number Distribution of Neutrons and Gamma Photons Generated in a Multiplying Sample'' \\
+\emph{Nuclear Instruments \& Methods $\boldsymbol{A}$}, {\bf
+566}, 598--608 (2006).
+
+\item \textsc{Paper II}\\[1mm] A.~Enqvist, I.~P\'{a}zsit and S.A.~Pozzi, ``The Detection Statistics of Neutrons and Photons Emitted from a Fissile Sample''\\
+\emph{Nuclear Instruments \& Methods $\boldsymbol{A}$},
+\textbf{607}, 451--457 (2009).
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Part 2, Multiplicity Theory}
+\begin{itemize}
+\item \textsc{Paper III}\\[1mm] I.~P\'{a}zsit, A.~Enqvist and L.~P\'{a}l, ``A note on the multiplicity expressions in nuclear safeguards.''\\
+\emph{Nuclear Instruments \& Methods $\boldsymbol{A}$},
+\textbf{603}, 541--544 (2009).
+
+\item \textsc{Paper IV}\\[1mm] A.~Enqvist, I.~P\'{a}zsit and S.~Avdic,``Sample Characterization Using Both Neutron and Gamma Multiplicities''\\
+\emph{Nuclear Instruments \& Methods $\boldsymbol{A}$},
+\textbf{615}, 62--69 (2010).
+
+\item \textsc{Paper V}\\[1mm] S.~Avdic, A.~Enqvist and I.~P\'{a}zsit, ``Unfolding sample parameters from neutron and gamma multiplicities using artificial neural networks.''\\
+\emph{ESARDA Bulletin}, \textbf{43}, 21--29 (2009). Invited
+paper.
+\end{itemize}
+\end{slide}
+
+
+\begin{wideslide}{Part 3-4, Scintillation Detectors \& Correlation Measurements}
+\small \begin{itemize}
+\item \textsc{Paper VI}\\[1mm] S.A.~Pozzi, M.~Flaska, A.~Enqvist and I.~P\'{a}zsit, ``Monte Carlo and Analytical Models of Neutron Detection with Organic Scintillation Detectors.''\\
+\emph{Nuclear Instruments \& Methods $\boldsymbol{A}$},
+\textbf{582}, 629--637 (2007).
+
+\item \textsc{Paper VII}\\[1mm] A.~Enqvist and I.~P\'{a}zsit, ``Calculation of the light pulse distributions induced by fast neutrons in organic scintillation detectors.''\\
+\emph{Accepted for publication in Nuclear Instruments \& Methods
+$\boldsymbol{A}$}.
+
+\item \textsc{Paper VIII}\\[1mm] A.~Enqvist, M.~Flaska and S.A.~Pozzi, ``Measurement of Neutron/gamma-ray Cross-Correlation Functions for the Identification of Nuclear Materials''\\
+\emph{Nuclear Instruments \& Methods $\boldsymbol{A}$},
+\textbf{595}, 426--430 (2008).
+
+\item \textsc{Paper IX}\\[1mm] A.~Enqvist, M.~Flaska and S.A.~Pozzi, ``Initial Evaluation for a Combined Neutron and Gamma-ray Multiplicity Counter''\\
+\emph{Submitted to Nuclear Instruments \& Methods
+$\boldsymbol{A}$}.
+\end{itemize}
+\end{wideslide}
+
+
+\section[slide=false]{Nuclear Safeguards}
+
+\begin{slide}{Safeguards}
+\begin{itemize}
+    \item Safeguards is a very broad area ranging from nuclear
+        physics to political regulations.
+
+    \item Three main tools are used for describing the physics
+        of nuclear materials:
+        \begin{itemize}
+            \item Analytical models.
+            \item Simulations.
+            \item Experiments.
+        \end{itemize}
+    \item All of which have strengths and weaknesses.
+
+    \item The work presented in the thesis is mostly based on
+        analytical methods for describing the physical
+        processes governing the multiplication and detection
+        of neutrons and gamma rays. The results have often
+        been compared to simulations, and experiments in form
+        of measurements have also been performed to gain
+        additional insight.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}[toc=]{Potential Perils?}
+The motivation of the work is the double-edged sword that nuclear
+materials presents: It is a way to provide carbon emission-free
+energy, while at the same time producing waste which needs careful
+management.
+\begin{figure}[H]
+\centering
+\includegraphics[width=6.5 cm]{Figures/nuclear_potential.eps}
+\end{figure}
+\end{slide}
+
+\begin{slide}[toc=]{The Task}
+\vspace{6mm}
+\begin{itemize}
+    \item The subject of the thesis is the non-intrusive investigation of nuclear materials. \\[6mm]
+
+    \item Detection, identification and quantification of
+        nuclear materials from the properties of the detected
+        radiation.
+\end{itemize}
+\end{slide}
+
+\section[slide=false]{Number Distributions}
+
+\begin{slide}{Branching Processes and Fissile Material}
+In fissile material the life of neutrons is a branching process in
+which neutrons can generate additional neutrons and reactions.
+\begin{itemize}
+    \item Correlated events.
+    \item Microscopic physics generating macroscopic effects.
+\end{itemize} \vspace{-3mm}
+\centering
+\begin{figure}[ht]
+\includemovie[
+  poster]{5cm}{5cm}{figures/example.avi}
+\end{figure}
+
+%\includegraphics[width=6.5 cm]{Figures/branch4.eps}
+\end{slide}
+
+
+\begin{slide}{Probability Distributions}
+\vspace{-1mm}
+\begin{itemize}
+\item Neutrons in a fissile sample can undergo a number of
+    different processes.
+\begin{itemize}
+\item Fission.
+
+\item Capture.
+
+\item $(n,x n)$-reactions.
+
+ \item Escape the sample.
+\end{itemize}
+\item Using the associated reaction probabilities, which depend on
+    sample characteristics, probability balance equations can be
+    formulated.
+
+\item Generating functions and master equations then provide the
+    tools needed to describe the behaviour of particles in the
+    sample.
+
+\item The goal: the probability $p(n)$ of generating $n$
+    particles when starting with a single particle or a source
+    event such as spontaneous fission with the emission of
+    several neutrons.
+\end{itemize}
+\end{slide}
+
+
+\begin{wideslide}[toc=]{The Theory}
+\vspace{-2mm}
+\begin{equation} p_1(n)=(1-\mathrm{p})\delta_{n,1} +
+\mathrm{p} \sum_{k=1}^{\infty} p_i(k)
+\begin{array}{c}  \quad \quad \quad \quad \quad \sum \quad \quad \quad  \prod^k_{i=1} p_1(n_i) \cr
+\{n_1+n_2+ \ldots + n_k=n\} \quad \quad \quad  \end{array}.
+\end{equation}
+converted using generating functions to simple master equations:
+\vspace{-2mm}
+\begin{eqnarray}
+\label{eq:hz}
+h(z)&=&(1-\mathrm{p})z+ \mathrm{p} q_i[h(z)], \\
+H(z)&=&q_{sf}[h(z)].
+\end{eqnarray}
+giving probability terms such as: \vspace{-2mm}
+\begin{equation}
+ P(2)= \frac{1}{2} \left(\frac{1-p}{1-p\overline{\nu_f}}\right)^{2}
+ \left[ \overline{\nu_s(\nu_s-1)} +
+ \frac{p}{1-p\overline{\nu_f}} \overline{\nu_s} \overline{\nu_f(\nu_f-1)}\right].
+\end{equation}\vspace{-2mm}
+through:\vspace{-2mm}
+\begin{equation}
+\label{eq:probp} p_1(n) = \left.\frac{1}{n!}
+\frac{d^{n}h(z)}{dz^{n}} \right|_{z=0} \quad \mbox{and} \quad P(n)
+= \left.\frac{1}{n!} \frac{d^{n}H(z)}{dz^{n}} \right|_{z=0}.
+\end{equation}
+\end{wideslide}
+
+
+\begin{wideslide}{Neutrons}
+\twocolumn[topsep=1cm]{
+\includegraphics[width=6.7cm]{Figures/probspontneutBIG2.eps}}
+{\begin{itemize}
+\item Probabilities of having $n$ neutrons generated when starting
+    with a source event, as calculated from expressions derived
+    from master equations.
+
+\item Dependence on mass shown for 20 wt\% $^{240}$Pu and 80
+    wt\% $^{239}$Pu  metallic samples.
+
+\item Change compared to non-multiplying case.
+
+\item Excellent agreement with MCNP-PoliMi.
+
+%\item Model was extended also to include absorption and detection.
+\end{itemize}}
+\end{wideslide}
+
+
+\begin{slide}{Gamma Rays}
+Gamma rays have no self multiplication, instead they are
+    generated as a by-product of the branching process of
+    neutrons.
+\twocolumn[topsep=0.5cm]{\vspace{-3mm}
+\includegraphics[width=5.8cm]{Figures/gamma45BIG.eps}}
+{\vspace{1mm}\begin{itemize}
+\item Dependence on mass shown.  \vspace{2mm}
+\item Wider distribution compared to neutrons. \vspace{2mm}
+\item Contains the information needed for calculating the moments.
+\end{itemize}}\vspace{3mm}
+The models were extended to also include absorption and
+    detection.
+\end{slide}
+
+
+
+\section[slide=false]{Multiplicity Theory}
+
+\begin{slide}{Multiplicity Counting}
+\begin{itemize}
+    \item Neutron multiplicity counting is used extensively
+        for materials control and accountability (MC\&A). \\[2mm]
+    \item The system has four parameters: neutron leakage
+        multiplication, alpha ratio, fission rate and neutron
+        detection efficiency.  \\[2mm]
+    \item Three multiplicity rates are normally measured:
+        singles, doubles and triples. \\[2mm]
+    \item The systems are usually based on $^{3}$He-detectors,
+        which are sensitive to slow neutrons. \\[2mm]
+    \item The analysis is based on the same type of master
+        equations previously mentioned. \\[2mm]
+    \item Use of scintillation detectors opens of
+        possibilities of detecting not only neutrons.
+\end{itemize}
+\end{slide}
+
+
+\begin{slide}{Extensions and Neural Networks}
+\begin{itemize}
+    \item The formalism was extended to take into account not
+        only gamma rays, but also mixed particle multiples
+        such as $nn\gamma$, $n\gamma$. \\[2mm]
+    \item The generation of neutrons and gamma rays shows
+        interdependence. \\[2mm]
+    \item The analysis grows more and more complicated which
+        motivated the usage of artificial neural networks for inverting the solutions (unfolding). \\[2mm]
+    \item Parameter unfolding using the information in an
+        over-determined system. \\[2mm]
+\end{itemize}
+\vspace{-1mm} \centering
+\includegraphics[width=9.0cm]{Figures/ANN3.eps}
+\end{slide}
+
+
+\begin{wideslide}{Method Validation}
+
+\begin{table}[!hbt]%[H]  %place at bottom of section?
+\centering
+\begin{tabular}{c||c|c|c}
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  & fission rate (F) & $\alpha$  &  $\mathrm{p}$   \\     \hline \hline
+  max. abs. rel. error (\%) & 0.0001 & 0.0021  & 0.0001  \\  \hline
+  mean error of training (\%) & -1.98e-9 & -4.14e-7  & 4.96e-9  \\  \hline
+  standard deviation of training (\%) & 7.56e-6 & 2.11e-4  & 3.24e-5  \\   \hline
+  mean error of test data (\%) & 1.28e-6 & -7.15e-6  & 2.56e-6  \\  \hline
+  standard deviation of test data (\%) & 9.34e-6 & 1.42e-4  & 3.29e-5  \\
+\end{tabular}
+\end{table}
+\twocolumn[topsep=0cm]{\centering \vspace{-3mm}
+\includegraphics[width=5.5cm]{Figures/neutron_input.eps}}
+{\vspace{3mm}\begin{itemize}
+\item The neural network was validated using neutron
+    multiplicities.
+\vspace{3mm}
+\item The accuracy of the unfolded parameters, especially the
+    fission rate (F), which is directly linked to the sample mass, is very encouraging.
+\end{itemize}}
+\end{wideslide}
+
+
+\begin{wideslide}{ANN Results}
+\begin{itemize}
+    \item The multiples up to third order give a total of 9
+        measurables. \\[2mm]
+    \item Additional parameters such as gamma ray detection
+        efficiency, gamma ratio and gamma leakage
+        multiplicity, needs to be unfolded.
+\end{itemize}
+\twocolumn[topsep=0cm]{\centering
+\includegraphics[width=6.5cm]{Figures/hist_errors6.eps}}
+{\vspace{5mm}\begin{itemize}
+\item Sensitivity analysis performed by adding noise to the input
+    data.
+    \vspace{2mm}
+\item Omission of input parameters showed which measurables are
+    most important and which could be omitted in a measurement due to redundancy.
+\end{itemize}}
+\end{wideslide}
+
+
+
+\section[slide=false]{Scintillation Light Pulses}
+
+
+\begin{slide}{Neutron Scattering}
+\begin{itemize}
+    \item The light pulses generated in a scintillation
+        detector by fast neutrons, depend on the scattering
+        history. \\[2mm]
+    \item Energy is transferred in the collisions and
+        transformed into light depending on the nuclei
+        involved in the scattering. \\[2mm]
+    \item The order and type of nuclei are very important to
+        the generated light pulse. \\[6mm]
+\end{itemize}
+\centering
+\includegraphics[width=8.5 cm]{Figures/collision2.eps}
+\end{slide}
+
+
+%\begin{wideslide}{Convolution Integrals}
+%New types of mathematical tools needed. It is not a branching
+%process but rather interdependent processes. \small \vspace{-1mm}
+%\[
+%    P_c = 1 - \frac{1}{h} \left[ E_3(0)-E_3(h) \right] +
+%    + \frac{4}{\pi d^{2}h}
+%    \int^{d}_0 dt \left\{ E_3(t)- E_3 \left[ (t^{2}+h^{2})^{1/2} \right]
+%    \right\}(d^{2}+t^{2})^{1/2}
+%\]
+%\begin{equation}\label{eq:cyl}
+%    - \frac{4}{\pi d^{2}h}
+%    \int^{h}_0 du (h-u) \int^{d}_0 t^{2} dt  \frac{e^{\left[ -(t^{2}+u^{2})^{1/2}
+%    \right]}}{(t^{2}+u^{2})^{3/2}} (d^{2} - t^{2})^{1/2} \equiv P(E),
+%\end{equation} \vspace{2mm}
+%
+%\normalsize Cross section and collision history dependence.
+%\small
+%\begin{equation}
+%\begin{array}{c}
+%\displaystyle  f_{HCH}(L,E_0) = \int^{L-l_{1}}_{0} \int^{L}_{0} f_{H} \left[ L- (l_{1} + l_{2}), E_{0} - (T_{h}(l_{1}) + T_{c}(l_{2})) \right] \times \cr
+%\cr
+%\vspace{-2mm}
+%   f_{C} \left[ l_{2}, E_{0} - T_{h}(l_{1}) \right] f_H [l_{1}, E_0] \times
+%   W\left[ E_0 - T_h(l_{1}) - T_c(l_{2}) - T_h(L-(l_{1} + l_{2})) \right] dl_1 dl_2.
+%\end{array}
+%\end{equation}
+%\end{wideslide}
+
+
+\begin{wideslide}[toc=]{Convolution Integrals}
+New types of mathematical tools needed. It is not a branching
+process but rather interdependent processes: \small \vspace{-1mm}
+\[
+\begin{array}{c}
+\displaystyle  f_{HCH}(L,E_0) = \int^{L-l_{1}}_{0} \int^{L}_{0} f_{H} \left[ L- (l_{1} + l_{2}), E_{0} - (T_{h}(l_{1}) + T_{c}(l_{2})) \right] \times \cr
+\cr
+\vspace{-2mm}
+   f_{C} \left[ l_{2}, E_{0} - T_{h}(l_{1}) \right] f_H [l_{1}, E_0] \times
+   W\left[ E_0 - T_h(l_{1}) - T_c(l_{2}) - T_h(L-(l_{1} + l_{2})) \right] dl_1 dl_2.
+\end{array}
+\]
+\normalsize using: \small \vspace{2mm}
+\[
+f_{1h}(L,E_0 ) = \frac{1}{{E_0 \sqrt {b^2  +
+4aL} }},
+\]
+\[
+f_{1c}(L,E_0 ) = \frac{\theta (L_{max,c} -
+L)}{{c\,(1 - \alpha)\, E_0}}.
+\]
+\[
+T_h(L) = \frac{{\sqrt {b^2  + 4aL}  -
+b}}{{2a}} \quad, \quad T_c(L) = L/c
+\]
+\end{wideslide}
+
+
+\begin{wideslide}{Collision Histories}
+The light pulse amplitude distribution was calculated for
+individual collisions histories for mono-energetic neutrons of 1.5
+MeV.
+
+\twocolumn[topsep=0.2cm]{\centering \vspace{3mm}
+\includegraphics[width=6.6 cm]{Figures/tripel15.eps}}
+{\vspace{5mm}\begin{itemize}
+\item Even  for collisions histories with the same type of nuclei,
+    the light pulse distribution is very different. \\[1mm]
+\item Comparisons with MCNP-PoliMi show good agreement. \\[1mm]
+\item The results from individual collisions histories can be used
+    to understand the shape of the full light pulse distribution.
+\end{itemize}}
+\end{wideslide}
+
+
+\begin{slide}{Size Dependence}
+The differences depending on detector size and collision history
+are accurately highlighted.
+\begin{figure}[hbt]
+\centering
+\subfigure[CCH, 1 cm.]{\label{fig:CCH1}
+\includegraphics[width=3.6cm]{Figures/CCH1.eps}}
+\subfigure[CCH, 10 cm.]{\label{fig:CCH10}
+\includegraphics[width=3.6cm]{Figures/CCH10.eps}}
+\subfigure[HCH, 1 cm.]{\label{fig:HCH1}
+\includegraphics[width=3.6cm]{Figures/HCH1.eps}}
+\subfigure[HCH, 10 cm.]{\label{fig:HCH10}
+\includegraphics[width=3.6cm]{Figures/HCH10.eps}}
+\end{figure}
+\end{slide}
+
+
+\section[slide=false]{Correlation Measurements}
+
+\begin{slide}{Event Correlations}
+
+\begin{itemize}
+    \item Fissions generate a number of neutrons and gamma
+        rays in each event.
+    \item Simultaneously detecting multiple particles is
+        therefore a good indicator of fissile material.
+    \item Correlation measurements could also give additional
+        information about sample parameters in a similar way
+        to multiplicity measurements.
+    \item Detecting both types of radiation has good benefits.
+\end{itemize}
+\centering
+\begin{tabular}{r l}
+\includegraphics[width=0.40\textwidth]{Figures/SNC00110.eps}   &
+\includegraphics[width=0.45\textwidth]{Figures/particle2_2.eps}
+\end{tabular}
+\end{slide}
+
+
+\begin{slide}{Cross-Correlations}
+\begin{itemize}
+    \item Cross-correlation (CC) measurements utilize two
+        correlated pulses to give a sample-geometry signature. \\[1mm]
+    \item It requires very fast detectors and systems, due to
+        the inherent speed of the gamma rays and neutrons. \\[1mm]
+    \item The accuracy of the CC functions depends on the
+        pulse shape discrimination (PSD) and other
+        considerations.
+\end{itemize}
+\vspace{-1mm} \centering
+\begin{tabular}{r l}
+\hspace{-4mm}
+\includegraphics[width=0.52\textwidth]{Figures/CFDtotvsMC30.eps} &    \hspace{-5mm}
+\includegraphics[width=0.52\textwidth]{Figures/CFDpartvsMC30.eps}
+\end{tabular}
+\end{slide}
+
+
+\begin{slide}{Mixed Multiplicity Counting}
+\begin{itemize}
+    \item As seen from multiplicity theory, successful
+        detection of multiples of both neutron and photons
+        might be used to improve pure neutron multiplicity
+        counting.
+\end{itemize}
++ No moderation needed, more measurables. \\[1mm]
+
+\, -- \,Low detection efficiency, requires PSD or two types of
+detectors.
+
+\centering
+\includegraphics[width=6 cm]{Figures/rates3.eps}
+\end{slide}
+
+
+
+\section[slide=false]{General Conclusions}
+
+\begin{slide}{Conclusions}
+\begin{itemize}
+    \item The work has shown the importance of using multiple
+        approaches: models, simulations and experiments all
+        have strengths and weaknesses. \\[5mm]
+    \item Simple physical processes such as neutron scattering
+        gives very complex analyzes and behaviours in for
+        example scintillation detectors. \\[5mm]
+    \item Performing measurements have allowed for a
+        possibility to determine which ideas are applicable,
+        and which are subject to technical limitations. \\[5mm]
+    \item Algorithms and tools of mathematical physics used
+        here occur not only in the area of safeguards but also
+        other fields such as reactor physics.
+\end{itemize}
+\end{slide}
+
+
+
+\end{document}
+\endinput

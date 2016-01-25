@@ -1,0 +1,717 @@
+%---------------------------------------------%
+%                                             %
+%               Report template               %
+%                                             %
+%                                             %
+%                LaTeX@dd 1997                %
+%                                             %
+%                                             %
+%                                        v1.0 %
+%---------------------------------------------%
+
+
+\documentclass[a4paper, 12pt, titlepage]{article}
+\usepackage[latin1]{inputenc}    % Accept european-encoded (latin1) characters.
+\usepackage{a4wide}              % Wide paper
+
+
+% For Swedish reports
+%\usepackage[swedish]{babel}
+%\frenchspacing
+
+% For encapsulated postscript figures
+%
+% Use:
+%
+% \includegraphics{width=10cm, height=10cm}{fig.eps}
+%
+% where width and height are optional
+\usepackage{graphicx}   % For eps figures
+\usepackage{epsfig}     % Alternative package
+
+% To get figures, tables, etc. where you want them.
+%
+% Use:
+%
+% \begin{figure}[H]
+% ...
+%
+\usepackage{here}
+
+
+% Nicer headers and footers
+%
+% \fancyhead[L/C/R]{} to change headers
+% \fancyfoot[L/C/R]{} to change footers
+\usepackage{fancyhdr} 
+\fancyhead[L]{Computational Physics}
+\fancyhead[R]{Problem 1}
+%\footrulewidth 0.5pt % Insert a line above the footer
+\pagestyle{fancy}
+
+%
+% Exchange text in encapsulated postscript figures with LaTeX text
+%
+% Before the image, insert arbitrary many
+% (Don't worry, it _will_ look good when you convert to postscript)
+%
+% \psfrag{original text}{substituted text}
+%
+\usepackage{psfrag}   
+
+%
+% For nicer captions
+%
+% Valid options (between []) are:
+%
+% Indentation: hang, center, centerlast, nooneline
+% Size: scriptsize, small, normalsize, large, Large
+% Style: up, it, sl, sc, md, bf, rm, sf, tt
+%
+\usepackage[hang,small,bf]{caption}
+
+%
+% Want to change font?
+%
+% Uncomment your choice, if all uncommented, Computer Modern Roman is
+% used. Note that some of these don't seem to work properly
+%
+%\usepackage{pspalatino}
+\usepackage{palatino}
+%\usepackage{times}
+%\usepackage{charter}
+%\usepackage{utopia}
+%\usepackage{pifont}
+%\usepackage{chancery}
+%\usepackage{bookman}
+%\usepackage{avant}
+%\usepackage{helvet}
+%\usepackage{zapfchan}
+%\usepackage{courier}
+%\usepackage{newcent}
+
+%
+% Some optional packages:
+%
+
+%
+% Index section
+%
+% Put a \index{keyword} at the word in the text, a \printindex where
+% you want the index printed, and run "makeindex <reportname>.idx
+% after LaTeX-compiling (and compile a second time)
+%
+%\usepackage{makeidx} %Index-section
+%\makeindex
+
+%
+% Fancier enumeration
+% You get a new \begin{enumerate}[XXX] where you can specify XXX to be
+% text {i,I,a,A,1}, for example \begin{enumerate}[Uppg. a)] to get a
+% Uppg. a)/b)/c) list.
+%
+%\usepackage{enumerate}
+
+
+% Some neat macros
+
+% Ordinary nth order (\Od) and 1st order (\OD) derivative
+% Ex: \Od{3}{f}{x}  \OD{f}{x}
+\newcommand{\Od}[3]{\frac{d^{#1}#2}{d#3^{#1}}}
+\newcommand{\OD}[2]{\frac{d#1}{d#2}}
+
+% Partial nth order (\Pd) and 1st order (\PD) derivative 
+% Ex: \Pd{2}{f}{y} \PD{f}{y}
+\newcommand{\Pd}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
+\newcommand{\PD}[2]{\frac{\partial#1}{\partial#2}}
+% Binomial
+% Ex: \binom{3}{5}
+\newcommand{\binom}[2]{\pmatrix{ \mbox{\small{\it #1\rm}} \cr
+    \mbox{\small{\it #2\rm}}}}
+
+% Fourier and Laplace transform symbols
+% Ex: \Fourier \Laplace
+\newcommand{\Fourier}{\mathcal{F}}
+\newcommand{\Laplace}{\mathcal{F}}
+
+% Real and Complex 
+% Ex: \Real \Complex
+\newcommand{\Real}{\mathbf{R}}
+\newcommand{\Complex}{\mathbf{C}}
+
+% Real and imaginary parts (nicer than \Re and \Im)
+% Ex \real \imag
+\newcommand{\real}{\mathrm{Re}\ }
+\newcommand{\imag}{\mathrm{Im}\ }
+
+% n/m fractions
+% Ex: \nfrac{2}{3}
+\newcommand{\nfrac}[2]{{}^{#1}\!\!/\!{}_{#2}}
+
+\newcommand{\bra}[1]{\langle #1|}
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+
+
+% And here the document begins!
+\begin{document}
+
+%---------------------------------------------%
+%                                             %
+%                  Titlepage                  %
+%                                             %
+%---------------------------------------------%
+
+\begin{center}
+
+  \textbf{\Huge{Calculations on H-Kr Scattering Cross-Sections}}
+
+  \large{Problem 1b}
+
+  \textsc{\large{Computational Physics}}
+
+  \vspace{4 cm} % Vertical space
+
+  %\includegraphics[width=10cm]{nice.eps}
+
+  \vfill % Puts what's below at the bottom of the page
+
+  \large{Andreas Enqvist, Jens Michelsen}
+  
+  \ % Empty paragraph
+
+  \normalsize{\today}
+
+\end{center}
+
+\thispagestyle{empty} % No page number on title page.
+
+
+%---------------------------------------------%
+%                                             %
+%      Abstract and Table of Contents         %
+%                                             %
+%---------------------------------------------%
+
+
+%---------------------------------------------%
+%                                             %
+%                 Introduction                %
+%                                             %
+%---------------------------------------------%
+\begin{abstract}
+In this report we calculate the cross-section of H-Kr scattering. This is done by numerical evaluation of quantum mechanical models of the scattering process. Two different model-potentials are used and compared. The first one is essentially a hardsphere i.e. an infinite potential at a fixed radius. The second one is the Lennard-Jones potential with a cut-off at a suitable distance from the nucleus. 
+\end{abstract}
+
+
+\section{General Quantum Scattering}
+The scattering process is, in the case of a spherically symmetric potential, best described using the Schrödinger equation in spherical coordinates. Since the
+ Hamiltonian is rotationally invariant we only need to solve the radial Schrödinger equation:
+
+\begin{equation}
+\label{eq:radialse}
+\left[-\frac{\hbar^2}{2m}\Od{2}{}{r}+V(r)+\frac{\hbar^2l(l+1)}{2mr^2}\right]u_l(r)=Eu_l(r)
+\end{equation} 
+
+Where $V(r)$ is our model-potential, which can be set to zero for sufficiently large r ($r>r_{max}$).
+
+The solution to the radial S.E. are generally a superposition of regular and irregular spherical Bessel-functions. In the presence of a scatterer the amplitudes can be identified as functions of the phase-shift, $\delta_l$, in the following manner:
+
+\begin{equation}
+\label{eq:radialsol}
+u_l(r)\propto kr\left(\cos(\delta_l)j_l(kr)-\sin(\delta_l)n_l(kr)\right) \ , \ \ \ r>r_{max}
+\end{equation}
+
+where $k=\sqrt{2mE}/\hbar$.
+
+The phase shift $\delta_l$ depends on the energy of the incoming projectile. Further $\delta_l$ is the parameter that determines the total cross-section $\sigma_{tot}$ in the following way:
+
+\begin{equation}
+\label{eq:sigmatot}
+\sigma_{tot}=\frac{4\pi}{k^2}\sum_{l=0}^{\infty}(2l+1)\sin^2\delta_l
+\end{equation}
+
+To find the phase-shift we need to move to a distance where the potential vanishes, i.e. $r>r_{max}$. The phase shift is then given by the equation:
+
+\begin{equation}
+\label{eq:phaseshift}
+\tan \delta_l=\frac{r_1u_l(r2)j_l(kr_1)-r_2u_l(r_1)j_l(kr_2)}{r_1u_l(kr_2)n_l(kr_1)-r_2u_l(r_1)n_l(kr_2)}
+\end{equation} 
+
+where we choose to take the two points $r_1$ and $r_2$ to be outside $r_{max}$ and roughly half a wavelength apart.
+
+The summation in equation \ref{eq:sigmatot} will, in our numerical calculations be limited to a certain $l_{max}$ since the phase shift is very small for large $l$. $l_{max}$ is determined by $l_{max}\simeq kr_{max}$.  
+
+
+\section{Problem 1; The Hard Sphere Model}
+\label{sec:hardy}
+In the case of the hard sphere model, the potential is given by:
+
+\begin{equation}
+\label{eq:hardy}
+V(r)=\left\{
+\begin{array}{ll}
+0 & r>a \\
+\infty & r\leq a\\
+\end{array}
+\right.
+\end{equation}
+
+where a is the radius of the hard sphere.
+
+The phase shift can then be found using the boundary condition $u_l(a)=0$:
+
+\begin{equation}
+\label{eq:bc}
+\cos(\delta_l) j_l(ka)-\sin(\delta) n_l(ka)=0
+\end{equation}
+
+Furthermore we obtain the total cross section for a hard sphere:
+
+\begin{equation}
+\sigma_{tot}=\frac{4\pi}{k^2}\sum_{l=0}^{\infty}\frac{(2l+1)j_l^2(ka)}{j_l^2(ka)+n_l^2(ka)}
+\end{equation} 
+
+In the high and low Energy limits the cross section takes the forms:
+
+\begin{equation}
+\label{eq:sigmalim}
+\sigma_{lim}\simeq \left\{ \begin{array}{ll}
+4\pi a^2 & ka<<1\\
+2\pi a^2 & ka>>1\\
+\end{array}
+\right.
+\end{equation}
+
+To confirm this we performed numerical calculations (see Appendix \ref{sec:numhard}) and obtained the following values:\\
+\begin{center}
+
+\begin{tabular}{|l|l|l|l|} \hline
+E [eV] & $ka$ & $\sigma_{num}$ [$m^2$] & $\sigma_{lim}$ [$m^2$]\\ \hline
+$10^{-8}$ & $0.0349$ & $3.1769\cdot10^{-17}$ & $3.1769\cdot10^{-17}$\\ \hline
+$10^{-6}$ & $0.3492$ & $3.0635\cdot10^{-17}$ & $3.1769\cdot10^{-17}$\\ \hline
+$10^{-2}$ & $34.922$ & $1.7192\cdot10^{-17}$ & $1.5885\cdot10^{-17}$\\ \hline
+$10^{0} $ & $349.22$ & $1.6164\cdot10^{-17}$ & $1.5885\cdot10^{-17}$\\ \hline
+$10^{2} $ & $3492.2$ & $1.5941\cdot10^{-17}$ & $1.5885\cdot10^{-17}$\\ \hline
+\end{tabular}\\
+
+\end{center}
+
+As we can see, the numerical calculations approach the theoretical values, $\sigma_{lim}$ in the high and low energy limits.
+
+\section{Problem 2 - Lennard-Jones Potential}
+\label{sec:lennjones}
+In this problem we consider the Lennard-Jones potential, with a cutoff at $r_{max}=5\sigma$.
+
+\begin{equation}
+\label{eq:lennard}
+V(r)=\left\{
+\begin{array}{cl}
+4\epsilon \left[\left(\frac{\sigma}{r}\right)^{12}-\left(\frac{\sigma}{r}\right)^{6}\right] & r\leq r_{max} \\
+& \\
+0 & r>r_{max} \\
+\end{array}
+\right.
+\end{equation}
+
+where $\epsilon$ and $\sigma$ are constants.
+
+We have used two different routines, which both gives the same result. In the first one we use Numerovs method, and in the second one we used the MATLAB routine ode45 (both codes are included in the Appendices \ref{sec:numerov} and \ref{sec:ode45} respectively.) 
+
+The radial S.E. ,eq. \ref{eq:radialse}, was solved by iterating outwards from $r=r_{min}$. The boundary values for $u_l(r_{min})$  and $\OD{u_l}{r}(r_{min})$ are obtained by the approximate solution to the radial S.E. (small r) given by:
+
+\begin{equation}
+u_l(r)\simeq \exp(-Cr^{-5})
+\end{equation} 
+
+where $C$ is given by $\sqrt{8m\epsilon\sigma^{12}/25\hbar^2}$.
+
+The goal is to determine the phase shift $\delta_l(E)$ for energies ranging from $0.3$meV to $30$meV. The phase shift is obtained from eq. \ref{eq:phaseshift}. For some values of E and $l$ the wavefunctions is plotted together with the expression in eq. \ref{eq:radialsol}.
+
+\begin{center}
+\begin{figure}[H]
+\includegraphics[height=9cm]{waveref.eps}
+\label{fig:waveref1}
+\includegraphics[height=9cm]{waveref2.eps}
+\label{fig:waveref2}
+\caption{For large $r$ we see that our solutions are very similar to the solutions of eq. \ref{eq:radialsol}. This means that the wavefunction return to the solutions for the free particle hamiltionian with only the phase shift as a memory.}
+\end{figure}
+
+\end{center}
+
+\section{Problem 3 - The cross section}
+ 
+Using the equation for the total cross section, eq. \ref{eq:sigmatot}, together with the phase shift we calculated the cross section numerically.
+
+\begin{center}
+
+\begin{figure}[H]
+\includegraphics[width=14cm]{0-6eVsemilog.eps}
+\label{fig:sigmatot}
+\caption{The cross section as a function of energy.}
+\end{figure}
+
+\end{center}
+
+As we can see there are multiple (3) resonance peaks. These peaks correspond to bound states within the classically forbidden region. The effective potential $V_{eff}=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}$ has bound states for discrete values of $l$ and E. To identify the resonances in the total cross section we plotted the partial cross sections for different $l$.
+
+
+\begin{center}
+\begin{figure}[H]
+\includegraphics[width=14cm]{sigmal.eps}
+\caption{Cross section for different l as a function of E.}
+\label{fig:sigmal}
+\end{figure}
+\end{center}
+
+From the fact that the peak for $l=4$ goes above $6\cdot10^{-18}$ we can deduce that the first peak in the total cross section corresponds to a bound state for $l=4$ and $E\simeq 0.4$meV. In the same way the second and third peaks correspond to bound states at $l=5$ and $l=6$.
+
+\section{Problem 4 - Corrections}
+
+The fact that we have cut-off our potential at $r=r_{max}$ will of course result in a slightly inaccurate solution to the radial S.E. and therefore in the phase shift and ultimately in the total cross section. Using perturbation theory a correction term can be obtained:
+
+\begin{equation}
+\label{eq:corr}
+\Delta\delta_l=-\frac{\hbar^2}{2m}\int_{r_{max}}^{\infty} \ j_l^2(kr)V(r)r^2dr
+\end{equation}
+
+and the corrected cross section can then be written:
+
+\begin{equation}
+\label{eq:sigmacorr}
+\sigma_{newtot}=\frac{4\pi}{k^2}\sum_{l=0}^{\infty} (2l+1)\sin^2( \delta_l+\Delta\delta_l)
+\end{equation}
+
+Our numerical result of the new cross section is plotted in figure \ref{fig:newsigma}.
+
+\begin{center}
+\begin{figure}[H]
+\includegraphics[width=12cm]{nysigmasum.eps}
+\label{fig:newsigma}
+\caption{As we can see there is only a slight effect of the correction term for small energies. The small jaggies are probably mainly due to numerical inaccuracies.}
+\end{figure}
+\end{center}
+
+\section{Conclusions}
+We have numerically evaluated the cross sections for H-Kr scattering using two model-potentials. In the Lennard-Jones case we observed resonances that are interpreted as bound states within the potential. Since we, in this quantum case, used the effective potential which accounts for the quantization of angular momentum.  
+
+Comparing with the references \cite{toennies} our results seem accurate.
+
+Since we performed the calculations using two different methods we were able to compare the two. We found that although somewhat cumbersum the ode45 method proved much faster in the MATLAB environment. Perhaps the Numerov method would have been better in another programming environment such as fortran.
+
+The advantage with the Numerov method is that you can easily compare different solutions since we have a fixed step-size, this is impossible with the variable step-size that ode45 uses.
+
+
+
+\newpage
+
+\appendix
+\section{Hard-Sphere Code}
+\label{sec:numhard}
+\begin{verbatim}
+clear all; clf;
+disp('performing simulation ...');
+j=inline('sqrt(pi./(2*x)).*besselj(l+1/2,x)','l','x');
+n=inline('sqrt(pi./(2*x)).*bessely(l+1/2,x)','l','x');
+hbar=1.054e-34;  mp=1.6726e-27;
+alpha=hbar^2/(2*mp); eV2J=1.602e-19; sigma=3.18e-10;
+epsilon=5.9e-3*eV2J; rmin=0.5*sigma; a=5*sigma; rl=100*rmin;
+E=1e-3/eV2J;
+k=sqrt(E/alpha);
+lmax=ceil(k*a);
+
+for l=0:1:lmax
+  sig(l+1)=4*pi/k^2*(2*l+1)*(j(l,k*a))^2/((j(l,k*a))^2+(n(l,k*a))^2);
+end
+
+sigmatot=sum(sig);
+disp(['Accourding to the numerical simulation the total cross-section is: ', num2str(sigmatot)]);
+
+if k*a>1
+  sigmath=2*pi*a^2;
+else
+  sigmath=4*pi*a^2
+end
+
+disp(['Theoretically the total cross-section is: ', num2str(sigmath)]);
+disp('.');
+disp('Plotting...');
+
+r=linspace(a,rl,100);
+u=zeros(length(r),lmax+1);
+for p=0:lmax
+  dl(p+1)=atan(j(p,k*a)/n(p,k*a));
+  u(:,p+1)=(k*r.*(cos(dl(p+1))*j(p,k*r)-sin(dl(p+1)).*n(p,k*r)))';
+end
+
+u=sum(u,2);
+u=u/max(max(u), min(u));
+plot(r,u);
+axis([0,60,-10,10]);
+\end{verbatim}
+
+\clearpage \addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+\thispagestyle{fancy}
+
+\bibitem{thijssen} J.M. Thijssen, \textit{Computational Physics}, Cambridge, 1999.
+\bibitem{toennies} J.P. Toennies et. al., J. Chem. Phys 71, 614.
+\bibitem{thijssen} J.J. Sakurai, \textit{Modern Quantum Mechanics}, Addison-Wesley, 1994.
+
+\end{thebibliography}
+
+
+
+
+\newpage
+
+
+\section{Lennard-Jones Potential Code}
+\subsection{Numerov's method}\label{sec:num}
+\begin{verbatim}
+clf;
+clear all;
+disp('.');
+disp('performing simulation ...');
+disp('.');
+hbar=1.054e-34;
+mp=1.6726e-27;
+alpha=hbar^2/(2*mp);        %is the ratio hbar^2/2mp=me/mp in au
+eV2J=1.602e-19;
+sigma=3.18e-10; epsilon=5.9e-3*eV2J;
+rmin=0.5*sigma; rmax=5*sigma; rstop=100*rmin;
+N=5000;
+r=linspace(rmin,rstop,N);
+h=(rstop-rmin)/N;
+C=sqrt(4*epsilon*sigma^12/(alpha*25));
+
+jl=inline('sqrt(pi./(2*x)).*besselj(l+1/2,x)','l','x');
+nl=inline('sqrt(pi./(2*x)).*bessely(l+1/2,x)','l','x');
+
+Elin=logspace(log10(0.3e-3*eV2J),log10(30e-3*eV2J),100);
+sigmatot=zeros(size(Elin));
+
+for g=1:length(Elin)
+E=Elin(g);
+k=sqrt(E/alpha);
+lambda=2*pi/k;
+lmax=ceil(rmax*sqrt(E/alpha))
+
+w=zeros(size(r));
+u=zeros(size(r));
+utot=zeros(size(r));
+
+r1=ceil((rmax-rmin)/h);
+r2=r1+ceil(lambda/(2*h));
+
+for l=0:lmax
+   w(1)=(1-h^2/12*F(l,r(1),E))*exp(-C*r(1)^(-5));
+   w(2)=(1-h^2/12*F(l,r(2),E))*exp(-C*r(1)^(-5))*(h*5*C*r(1)^(-6)+1);
+
+   for n=2:length(r)-1
+   w(n+1)=2*w(n)-w(n-1)+h^2*F(l,r(n),E)*(1-h^2/12*F(l,r(n),E))^(-1)*w(n);
+   end
+   for i=1:length(w)
+      u(i)=(1-h^2/12*F(l,r(i),E))^(-1)*w(i);
+   end
+
+   u=u/max(max(u),min(u));
+   
+   dl(g,l+1)=atan((r(r1)*u(r2)*jl(l,k*r(r1))-r(r2)*u(r1)*jl(l,k*r(r2)))
+             /(r(r1)*u(r2)*nl(l,k*r(r1))-r(r2)*u(r1)*nl(l,k*r(r2))));
+   sigmal(g,l+1)=4*pi/k^2*(2*l+1)*(sin(dl(g,l+1)))^2;
+   sigmatot(g)=sigmatot(g)+sigmal(g,l+1);
+   %plot(r,u); pause;
+   utot=utot+u;
+
+   deltadl(g,l+1)=-1/alpha*k*sum(jl(l,k*r(r2:length(r))).^2*
+                   4*epsilon.*((sigma./r(r2:length(r))).^12
+                   -(sigma./r(r2:length(r))).^2).*r(r2:length(r)).^2*h);
+end
+    %plot(r,utot);pause;
+end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%        PLOTTING
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+semilogx(Elin/eV2J,sigmatot);
+xlabel('eV'); ylabel('m^2');
+title('\sigma_{tot}(E)');
+
+ pause;
+clf;
+lnum=[1,4,5,6,8];
+fmax=length(lnum);
+q=1;
+
+for f=lnum
+subplot(fmax,2,q)
+     semilogx(Elin/eV2J,sigmal(:,f));
+     xlabel('eV'); ylabel('m^2');
+     title(['\sigma_l  ,  l=', num2str(f)]);
+subplot(fmax,2,q+1) 
+     semilogx(Elin/eV2J,deltadl(:,f));
+     xlabel('eV'); ylabel('\Delta\delta_l');
+     title(['Error in \delta_l  ,  l=', num2str(f)]);
+     q=q+2;
+end
+
+\end{verbatim}
+
+\subsubsection{Subprogram to Numerov's method}
+\begin{verbatim}
+function F=F(l,r,E)
+     hbar=1.054e-34;
+     mp=1.6726e-27;
+     eV2J=1.6726e-19;
+     alpha=hbar^2/(2*mp);
+     sigma=3.18e-10;
+     epsilon=5.9e-3*eV2J;
+     rmax=5*sigma;
+     if r < rmax
+     F=(4*epsilon*((sigma/r)^12-(sigma/r)^6))/alpha+l*(l+1)/r^2-E/alpha;
+     else
+     F=l*(l+1)/r^2-E/alpha;
+     end
+\end{verbatim}
+
+
+
+
+
+\subsection{ODE45 method}
+\label{sec:ode45}
+\begin{verbatim}
+%pot=4*epsilon*((sig/r).^12-(sig/r).^6);    %OBS till r=5*sig
+rmin=sig/2;
+% Hitta C!
+C=sqrt(4*epsilon*sig^12/25*const);
+options=odeset('AbsTol',1e-20,'RelTol',1e-6);
+                       
+    D1=log10(0.3*1.602e-22); D2=log10(15*1.602e-22);
+    Espace=logspace(D1,D2,100);
+    for I=1:length(Espace)
+        E=Espace(I);
+        k=sqrt(const*E);   
+        lambda=2*pi/k;
+        lmax=round(k*a)
+        for L=0:lmax
+            l=L;
+            u0=zeros(2,1);
+            u0(1)=exp(-C*rmin^-5);
+            u0(2)=5*C*rmin^-6*exp(-C*rmin^-5);
+            rspan=[rmin 10*rmin];
+            [r1,u1]=ode45(@diffekv,rspan,u0,options,E,l);
+            %plot(r1,u1(:,1))
+            %break
+            %E=10e-3;
+            u0=zeros(2,1);
+            u0(1)=u1(length(u1),1);
+            u0(2)=u1(length(u1),2);
+            rspan=[10*rmin 30*rmin];
+            [r2,u2]=ode45(@diffekv2,rspan,u0,options,E,l);
+    
+            U=[u1;u2];
+            R=[r1;r2];
+            %hold on
+            %plot(R,U(:,1));
+            %length(R)
+            %pause;       
+            Rone=7*sig;
+            Rtwo=Rone+lambda/2;
+            K=1;
+            while (R(K)-Rone)<0
+                K=K+1;
+            end
+            Rone=R(K);
+            M=1;
+            while (R(M)-Rtwo)<0
+                M=M+1;
+            end
+            Rtwo=R(M);
+            Delta(I,L+1)=atan((Rone*U(M)*jsp(l,k*Rone)-
+            -Rtwo*U(K)*jsp(l,k*Rtwo))/(Rone*U(M)*nsp(l,k*Rone)-
+            -Rtwo*U(K)*nsp(l,k*Rtwo)));
+        end
+    end
+
+
+%break
+%uppgift 3 
+storlek=size(Delta);
+sigma3=[]; sigmasum=[];
+k=sqrt(const*Espace);
+for J=1:storlek(1)
+   for I=1:storlek(2)
+      sigma3(I)=4*pi/k(J)^2*(2*I+1)*sin(Delta(J,I))^2;
+   end
+   sigmasum(J)=sum(sigma3);
+end
+%clf
+hold off
+semilogx(Espace/1.602e-19,sigmasum*1e20)
+%plot(Espace,sigmasum)  
+
+%uppgift 4
+Q=length(Espace);
+Enr=round(Q/2);
+k=sqrt(const*Espace(Enr));
+jsp=inline('sqrt(pi./(2*x)).*besselj(l+1/2,x)','l','x');
+steg=1000;
+lmax=round(k*a);
+R=linspace(5*sig,100*sig,steg);
+del=95*sig/steg;
+for W=1:lmax
+    pert=[];
+    
+    for V=1:steg
+        pert(V)=del*const*k*(jsp(k*R(V),W))^2*((sig./R(V)).^12-
+        -(sig./R(V)).^6)*R(V)^2;
+    end
+    deldel(W)=sum(pert);
+end
+pertdel=Delta(Enr,1:length(deldel))+deldel;
+for U=1:length(deldel)
+   sigmapert(U)=4*pi/k^2*(2*U+1)*(sin(pertdel(U)))^2;
+end
+sigmapertsum=sum(sigmapert);
+error=1-sigmasum(Enr)/(sigmapertsum);
+
+
+\end{verbatim}
+
+
+
+
+\subsection{Function files for ODE45}
+\begin{verbatim}
+
+function f=diffekv(R,u,E,l)
+global sig epsilon const
+f=zeros(2,1);
+f(1)=u(2);
+size(R);
+f(2)=-const*E*u(1)+const*4*epsilon*((sig./R)^12-(sig./R)^6)*u(1)+l*(l+1)./R^2*u(1);
+
+
+----------
+
+
+function f=diffekv2(r,u,E,l)
+global sig epsilon const
+f=zeros(2,1);
+f(1)=u(2);
+%size(r);
+f(2)=-const*E*u(1)+l*(l+1)./r^2*u(1);
+\end{verbatim}
+
+\end{document}
+
+
+
+
+
+
+
+

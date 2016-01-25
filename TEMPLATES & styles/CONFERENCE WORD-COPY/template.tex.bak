@@ -1,0 +1,60 @@
+\documentclass[12pt,a4paper]{article}
+
+% if you use PostScript figures in your article
+% use the graphics package for simple commands
+% \usepackage{graphics}
+% or use the graphicx package for more complicated commands
+% \usepackage{graphicx}
+% or use the epsfig package if you prefer to use the old commands
+% \usepackage{epsfig}
+
+% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[dvips]{graphicx}
+\usepackage{here}
+
+%\usepackage{pspalatino}
+%\usepackage{palatino}
+\usepackage{times}
+%\usepackage[figuresright]{rotating}
+
+\setlength{\textwidth}{430pt} \setlength{\textheight}{630pt}
+\setlength{\hoffset}{-20pt} \setlength{\voffset}{-40pt}
+
+\begin{document}
+
+
+
+\begin{center}
+
+  \textbf{\Large{The number distribution of neutrons and gamma photons generated in a multiplying sample}}
+
+ \vspace{0.4 cm}
+
+  \large{Andreas Enqvist\footnote{Corresponding author.}$^{a}$, Imre P\'{a}zsit$^{a}$, Sara Pozzi$^{b}$}
+\vspace{0.2 cm}
+
+  $^{a}$Department of Nuclear Engineering, Chalmers University of Technology, SE-412 96 G\"{o}teborg,
+  Sweden\\
+  $^{b}$Oak Ridge National Laboratory, PO Box 2008 Ms6010, Oak Ridge TN 37831-6010, USA
+
+  \vspace{1 cm} % Vertical space
+
+  %\includegraphics[width=10cm]{nice.eps}
+
+  \ % Empty paragraph
+
+\end{center}
+
+\begin{abstract}
+
+The subject of this paper is an analytical derivation of the full
+probability distribution of the number of neutrons and photons
+generated in a sample with internal multiplication by one source
+
+\end{abstract}
+
+\section{Introduction}
+
+\end{document}

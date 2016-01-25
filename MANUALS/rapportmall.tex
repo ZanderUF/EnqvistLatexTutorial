@@ -1,0 +1,276 @@
+%---------------------------------------------%
+%                                             %
+%               Report template               %
+%                                             %
+%                                             %
+%                LaTeX@dd 1997                %
+%                                             %
+%                                             %
+%                                        v1.0 %
+%---------------------------------------------%
+
+
+\documentclass[a4paper, 12pt, titlepage]{article}
+\usepackage[latin1]{inputenc}    % Accept european-encoded (latin1) characters.
+\usepackage{a4wide}              % Wide paper
+
+
+% For Swedish reports
+%\usepackage[swedish]{babel}
+%\frenchspacing
+
+% For encapsulated postscript figures
+%
+% Use:
+%
+% \includegraphics{width=10cm, height=10cm}{fig.eps}
+%
+% where width and height are optional
+\usepackage{graphicx}   % For eps figures
+\usepackage{epsfig}     % Alternative package
+
+% To get figures, tables, etc. where you want them.
+%
+% Use:
+%
+% \begin{figure}[H]
+% ...
+%
+\usepackage{here}
+
+
+% Nicer headers and footers
+%
+% \fancyhead[L/C/R]{} to change headers
+% \fancyfoot[L/C/R]{} to change footers
+\usepackage{fancyhdr} 
+\fancyhead[L]{Matematisk Fysik F3, Uppgift III:1}
+\fancyhead[R]{Rayleigh Confusion}
+\footrulewidth 0.5pt % Insert a line above the footer
+\pagestyle{fancy}
+
+%
+% Exchange text in encapsulated postscript figures with LaTeX text
+%
+% Before the image, insert arbitrary many
+% (Don't worry, it _will_ look good when you convert to postscript)
+%
+% \psfrag{original text}{substituted text}
+%
+\usepackage{psfrag}   
+
+%
+% For nicer captions
+%
+% Valid options (between []) are:
+%
+% Indentation: hang, center, centerlast, nooneline
+% Size: scriptsize, small, normalsize, large, Large
+% Style: up, it, sl, sc, md, bf, rm, sf, tt
+%
+\usepackage[hang,small,bf]{caption}
+
+%
+% Want to change font?
+%
+% Uncomment your choice, if all uncommented, Computer Modern Roman is
+% used. Note that some of these don't seem to work properly
+%
+\usepackage{pspalatino}
+%\usepackage{palatino}
+%\usepackage{times}
+%\usepackage{charter}
+%\usepackage{utopia}
+%\usepackage{pifont}
+%\usepackage{chancery}
+%\usepackage{bookman}
+%\usepackage{avant}
+%\usepackage{helvet}
+%\usepackage{zapfchan}
+%\usepackage{courier}
+%\usepackage{newcent}
+
+%
+% Some optional packages:
+%
+
+%
+% Index section
+%
+% Put a \index{keyword} at the word in the text, a \printindex where
+% you want the index printed, and run "makeindex <reportname>.idx
+% after LaTeX-compiling (and compile a second time)
+%
+%\usepackage{makeidx} %Index-section
+%\makeindex
+
+%
+% Fancier enumeration
+% You get a new \begin{enumerate}[XXX] where you can specify XXX to be
+% text {i,I,a,A,1}, for example \begin{enumerate}[Uppg. a)] to get a
+% Uppg. a)/b)/c) list.
+%
+%\usepackage{enumerate}
+
+
+% Some neat macros
+
+% Ordinary nth order (\Od) and 1st order (\OD) derivative
+% Ex: \Od{3}{f}{x}  \OD{f}{x}
+\newcommand{\Od}[3]{\frac{d^{#1}#2}{d#3^{#1}}}
+\newcommand{\OD}[2]{\frac{d#1}{d#2}}
+
+% Partial nth order (\Pd) and 1st order (\PD) derivative 
+% Ex: \Pd{2}{f}{y} \PD{f}{y}
+\newcommand{\Pd}[3]{\frac{\partial^{#1}#2}{\partial#3^{#1}}}
+\newcommand{\PD}[2]{\frac{\partial#1}{\partial#2}}
+% Binomial
+% Ex: \binom{3}{5}
+\newcommand{\binom}[2]{\pmatrix{ \mbox{\small{\it #1\rm}} \cr
+    \mbox{\small{\it #2\rm}}}}
+
+% Fourier and Laplace transform symbols
+% Ex: \Fourier \Laplace
+\newcommand{\Fourier}{\mathcal{F}}
+\newcommand{\Laplace}{\mathcal{F}}
+
+% Real and Complex 
+% Ex: \Real \Complex
+\newcommand{\Real}{\mathbf{R}}
+\newcommand{\Complex}{\mathbf{C}}
+
+% Real and imaginary parts (nicer than \Re and \Im)
+% Ex \real \imag
+\newcommand{\real}{\mathrm{Re}\ }
+\newcommand{\imag}{\mathrm{Im}\ }
+
+% n/m fractions
+% Ex: \nfrac{2}{3}
+\newcommand{\nfrac}[2]{{}^{#1}\!\!/\!{}_{#2}}
+
+
+
+
+% And here the document begins!
+\begin{document}
+
+%---------------------------------------------%
+%                                             %
+%                  Titlepage                  %
+%                                             %
+%---------------------------------------------%
+
+\begin{center}
+
+  \textbf{\Huge{RAYLEIGH-BÉNARD CONVECTION}}
+
+  \large{Uppgift III:1}
+
+  \textsc{\large{Matematisk Fysik F3}}
+
+  \vspace{4 cm} % Vertical space
+
+  %\includegraphics[width=10cm]{nice.eps}
+
+  \vfill % Puts what's below at the bottom of the page
+
+  \large{Anders Logg} \hspace{5 cm} \large{Greger Cronquist}
+  
+  \ % Empty paragraph
+
+  \normalsize{\today}
+
+\end{center}
+
+\thispagestyle{empty} % No page number on title page.
+
+
+%---------------------------------------------%
+%                                             %
+%      Abstract and Table of Contents         %
+%                                             %
+%---------------------------------------------%
+
+\begin{abstract}
+    
+\end{abstract}
+
+\newpage
+\tableofcontents % Always compile twice if you have changed much
+\newpage
+
+%---------------------------------------------%
+%                                             %
+%                 Introduction                %
+%                                             %
+%---------------------------------------------%
+
+\section{Introduction}
+
+\subsection{Organization of the Paper}
+
+
+%---------------------------------------------%
+%                                             %
+%                    Theory                   %
+%                                             %
+%---------------------------------------------%
+
+\section{Theory}
+
+
+%---------------------------------------------%
+%                                             %
+%              Analytical Solution            %
+%                                             %
+%---------------------------------------------%
+
+\section{Analytical Solution}
+
+
+%---------------------------------------------%
+%                                             %
+%              Numerical Solution             %
+%                                             %
+%---------------------------------------------%
+
+\section{Numerical Solution}
+
+
+%---------------------------------------------%
+%                                             %
+%             Results and Discussion          %
+%                                             %
+%---------------------------------------------%
+
+\section{Results and Discussion}
+
+
+%---------------------------------------------%
+%                                             %
+%                  References                 %
+%                                             %
+%---------------------------------------------%
+
+\clearpage \addcontentsline{toc}{section}{References}
+\begin{thebibliography}{99}
+\thispagestyle{fancy}
+
+\bibitem{book} A. Author, B. Author, \textit{Title}, Publisher, City, Year.
+
+\end{thebibliography}
+
+
+%---------------------------------------------%
+%                                             %
+%                    Appendix                 %
+%                                             %
+%---------------------------------------------%
+
+\newpage
+\appendix
+
+\section{Advanced Calculations}\thispagestyle{fancy}
+
+
+\end{document}
